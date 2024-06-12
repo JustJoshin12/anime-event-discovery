@@ -1,0 +1,20 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './prism.css';
+
+@font-face {
+    font-family: "Special Elite";
+    src: url("/fonts/SpecialElite-Regular.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins Bold";
+    src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins Bold Italic";
+    src: url("/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  }
+  
