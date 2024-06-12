@@ -1,4 +1,4 @@
-import background from "../../images/animeScene.jpg";
+const background = "/images/animeScene.jpg";
 
 const Error404Page = () => {
     return (
