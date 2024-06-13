@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export const VanishText = () => {
   return (
     <div className=" px-4 py-24 text-center md:py-36">
-      <h3 className="text-3xl font-medium text-violet-400 sm:text-4xl md:text-5xl lg:text-6xl">
+      <h3 className="text-3xl font-medium text-fuchsia-700 sm:text-4xl md:text-5xl lg:text-6xl">
       Thank you for Registering!!!
         <AnimatedText
           phrases={[
