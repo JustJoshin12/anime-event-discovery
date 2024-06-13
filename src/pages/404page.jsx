@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 
 const background = "/images/animeScene.jpg";
-const router = useRouter();
 
 const Error404Page = () => {
+  const router = useRouter();
+  
     return (
       <>
         <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
