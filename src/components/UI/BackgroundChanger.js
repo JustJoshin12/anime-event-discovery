@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import {useState, useEffect } from "react";
 
 const images = [
-  "/images/loginPageImages/animegirl.webp",
+  "/images/loginPageImages/anime.jpg",
   "/images/loginPageImages/anime2.jpg",
   "/images/loginPageImages/rengoku.png",
+  "/images/loginPageImages/fatestaynight.jpg"
 ];
 
 function BackgroundChanger({ children }) {
@@ -20,17 +21,17 @@ function BackgroundChanger({ children }) {
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${images[currentImage]})`,
-        transition: "background-image 1s ease-in-out",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-      className="background fade-in flex min-h-screen flex-1 flex-col justify-center px-6 lg:px-8"
-    >
+    <div className="background-changer flex min-h-screen flex-1 flex-col justify-center px-6 lg:px-8">
       {children}
+      <style jsx>{`
+        .background-changer {
+          background-image: url(${images[currentImage]});
+          transition: background-image 1s ease-in-out;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      `}</style>
     </div>
   );
 }

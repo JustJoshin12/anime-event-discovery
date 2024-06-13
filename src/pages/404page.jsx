@@ -1,4 +1,7 @@
+import { useRouter } from "next/router";
+
 const background = "/images/animeScene.jpg";
+const router = useRouter();
 
 const Error404Page = () => {
     return (
@@ -10,7 +13,7 @@ const Error404Page = () => {
           <p className="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <button type="button" onClick={() => {
-              
+              router.push('/login')
             }}
              >
               Go back home
