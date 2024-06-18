@@ -10,17 +10,37 @@ const images = [
 ];
 
 function preloadImages(srcs) {
+  const loadedImages = [];
   srcs.forEach(src => {
     const img = new Image();
     img.src = src;
+    img.onload = () => {
+      loadedImages.push(src);
+    };
   });
+  return loadedImages;
 }
 
 function BackgroundChanger({ children }) {
   const [currentImage, setCurrentImage] = useState(0);
+  const [preloadedImages, setPreloadedImages] = useState([]);
 
   useEffect(() => {
-    preloadImages(images);
+    if (typeof window !== 'undefined') {
+      // Preload images
+      setPreloadedImages(preloadImages(images));
+
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }).catch(error => {
+            console.log('ServiceWorker registration failed: ', error);
+          });
+        });
+      }
+    }
 
     const intervalId = setInterval(() => {
       setCurrentImage((currentImage) => (currentImage + 1) % images.length);
