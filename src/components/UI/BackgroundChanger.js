@@ -6,7 +6,7 @@ const images = [
   "/images/loginPageImages/anime.jpg",
   "/images/loginPageImages/anime2.jpg",
   "/images/loginPageImages/anime3.jpg",
-  "/images/loginPageImages/fatestaynight.jpg"
+  "/images/loginPageImages/anime5.jpg"
 ];
 
 function BackgroundChanger({ children }) {
