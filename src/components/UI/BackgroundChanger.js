@@ -10,27 +10,19 @@ const images = [
 ];
 
 function preloadImages(srcs) {
-  const loadedImages = [];
   srcs.forEach(src => {
     const img = new Image();
     img.src = src;
-    img.onload = () => {
-      loadedImages.push(src);
-    };
   });
-  return loadedImages;
 }
 
 function BackgroundChanger({ children }) {
   const [currentImage, setCurrentImage] = useState(0);
-  const [preloadedImages, setPreloadedImages] = useState([]);
-
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Preload images
-      setPreloadedImages(preloadImages(images));
+      preloadImages(images);
 
-      // Register service worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').then(registration => {
@@ -55,10 +47,14 @@ function BackgroundChanger({ children }) {
       <style jsx>{`
         .background-changer {
           background-image: url(${images[currentImage]});
-          transition: background-image 1s ease-in-out;
+          transition: background-image 1s ease-in-out, opacity 0.5s ease-in-out;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
+          opacity: 1;
+        }
+        .background-changer.fade-out {
+          opacity: 0;
         }
       `}</style>
     </div>
