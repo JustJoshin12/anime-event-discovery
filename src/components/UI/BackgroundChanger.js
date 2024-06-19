@@ -9,19 +9,15 @@ const images = [
   "/images/loginPageImages/fatestaynight.jpg"
 ];
 
-function preloadImages(srcs) {
-  srcs.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-}
-
 function BackgroundChanger({ children }) {
   const [currentImage, setCurrentImage] = useState(0);
-  
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      preloadImages(images);
+      const initialImage = new Image();
+      initialImage.src = images[currentImage];
+      initialImage.onload = () => setIsImageLoaded(true);
 
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -32,17 +28,26 @@ function BackgroundChanger({ children }) {
           });
         });
       }
+
+      const intervalId = setInterval(() => {
+        const nextImageIndex = (currentImage + 1) % images.length;
+        preloadImage(images[nextImageIndex], () => {
+          setCurrentImage(nextImageIndex);
+        });
+      }, 4000);
+
+      return () => clearInterval(intervalId);
     }
+  }, [currentImage]);
 
-    const intervalId = setInterval(() => {
-      setCurrentImage((currentImage) => (currentImage + 1) % images.length);
-    }, 4000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const preloadImage = (src, callback) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = callback;
+  };
 
   return (
-    <div className="background-changer flex min-h-screen flex-1 flex-col justify-center px-6 lg:px-8">
+    <div className={`background-changer flex min-h-screen flex-1 flex-col justify-center px-6 lg:px-8 ${isImageLoaded ? 'loaded' : 'loading'}`}>
       {children}
       <style jsx>{`
         .background-changer {
@@ -51,10 +56,12 @@ function BackgroundChanger({ children }) {
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          opacity: 1;
         }
-        .background-changer.fade-out {
+        .background-changer.loading {
           opacity: 0;
+        }
+        .background-changer.loaded {
+          opacity: 1;
         }
       `}</style>
     </div>
