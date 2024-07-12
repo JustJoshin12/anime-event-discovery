@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "@/src/store/slices/userSlice";
 import BackgroundChanger from "@/src/components/UI/BackgroundChanger";
@@ -62,7 +63,9 @@ function LoginPage() {
             }}
             className="bg-black/50 rounded-badge p-4 md:p-8 sm:mx-auto sm:w-full sm:max-w-sm"
           >
-            <img
+            <Image
+              width={150}
+              height={32}
               className="mx-auto w-auto h-40 md:h-44 xl:h-auto"
               src={websiteLogo.src}
               alt="Your Company"

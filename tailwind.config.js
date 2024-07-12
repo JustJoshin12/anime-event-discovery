@@ -7,8 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'neon-purple': '#bb29bb', 
-        'dark': '#000', 
+        galactic: {
+          background: '#121212',
+          primary: '#6200EA',
+          secondary: '#03DAC6',
+          accent: '#BB86FC',
+          text: '#E0E0E0',
+        },
       },
     },
   },
