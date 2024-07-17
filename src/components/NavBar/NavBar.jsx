@@ -3,18 +3,25 @@ import { useState } from "react";
 import { Disclosure, Menu } from "@headlessui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import SearchBar from "../UI/SearchBar";
 import Image from "next/image";
 
 const logo = "/images/websiteLogo.png";
 const userAvatar = "/images/avatarIcons/tengen.gif";
 
+
 export default function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const toggleMenu = () => {
+     setIsOpen(prevState => !prevState)
+  }
   return (
     <Disclosure as="nav" className="shadow-2xl bg-galactic-background/65 py-2">
-      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1500px] px-1 sm:px-2 xl:px-8">
         <div className="flex h-24 justify-between">
           <div className="flex">
-            <div className="flex flex-shrink-0 items-center lg:pr-12">
+            <div className="flex md:hidden lg:flex flex-shrink-0 items-center xl:pr-12">
               <Image
                 alt="Website Logo"
                 width={100}
@@ -23,7 +30,7 @@ export default function NavBar() {
                 className="h-24 w-24"
               />
             </div>
-            <div className="hidden text-lg lg:ml-6 sm:flex lg:space-x-8 xl:space-x-16  text-galactic-accent">
+            <div className="hidden text-base lg:text-lg lg:ml-6 sm:flex lg:space-x-5 xl:space-x-16  text-galactic-accent">
               <a
                 href="#"
                 className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
@@ -50,13 +57,17 @@ export default function NavBar() {
               </a>
             </div>
           </div>
-
+          {/*Search Bar*/}
+          <SearchBar classes="hidden md:flex items-center" />
           {/*userIcon conponent */}
           <UserProfileMenu />
 
-          <div className="-mr-2 flex items-center sm:hidden">
+          <div className="mr-2 flex items-center sm:hidden">
             {/* Mobile menu button */}
-            <Disclosure.Button className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <Disclosure.Button
+              onClick={() => setIsOpen(!isOpen)}
+              className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            >
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
@@ -72,82 +83,7 @@ export default function NavBar() {
         </div>
       </div>
 
-      <Disclosure.Panel className="sm:hidden bg-galactic-primary border-t-2 border-b-2">
-        <div className="space-y-1 pb-3 pt-2 font-bold">
-          <Disclosure.Button
-            as="a"
-            href="#"
-            className="block duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-50 py-2 pl-3 pr-4 text-base "
-          >
-            Home
-          </Disclosure.Button>
-          <Disclosure.Button
-            as="a"
-            href="#"
-            className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base  hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
-          >
-            Events
-          </Disclosure.Button>
-          <Disclosure.Button
-            as="a"
-            href="#"
-            className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
-          >
-            News
-          </Disclosure.Button>
-          <Disclosure.Button
-            as="a"
-            href="#"
-            className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base  hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
-          >
-            Profile
-          </Disclosure.Button>
-        </div>
-        <div className="border-t border-gray-200 pb-3 pt-4">
-          <div className="flex items-center px-4">
-            <div className="flex-shrink-0">
-              <Image
-                alt=""
-                width={32}
-                height={32}
-                src={userAvatar}
-                className="h-14 w-14 rounded-full border-2 border-galactic-deepCyanGreen"
-              />
-            </div>
-            <div className="ml-3">
-              <div className="text-base font-bold text-galactic-deepCyanGreen">
-                ThatFla$hyBoi
-              </div>
-              <div className="text-sm font-medium text-galactic-text">
-                Joshua Smith
-              </div>
-            </div>
-          </div>
-          <div className="mt-3 space-y-1 font-bold">
-            <Disclosure.Button
-              as="a"
-              href="#"
-              className="block px-4 py-2 text-base duration-100 hover:border-l-4  hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
-            >
-              Your Profile
-            </Disclosure.Button>
-            <Disclosure.Button
-              as="a"
-              href="#"
-              className="block px-4 py-2 text-base duration-100 hover:border-l-4  hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
-            >
-              Settings
-            </Disclosure.Button>
-            <Disclosure.Button
-              as="a"
-              href="#"
-              className="block px-4 py-2 text-base duration-100 hover:border-l-4  hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
-            >
-              Sign out
-            </Disclosure.Button>
-          </div>
-        </div>
-      </Disclosure.Panel>
+      <MobileNavBar isOpen={isOpen} />
     </Disclosure>
   );
 }
@@ -273,5 +209,120 @@ const UserProfileMenu = () => {
         </AnimatePresence>
       </Menu>
     </motion.div>
+  );
+};
+
+const MobileNavBar = ({ isOpen }) => {
+  const revealVariant = {
+    hidden: { height: 0, opacity: 0 },
+    visible: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.42, 0, 0.58, 1], // Custom easing function
+      },
+    },
+    exit: {
+      height: 0,
+      opacity: 0,
+      transition: { 
+        duration: 0.4, 
+        ease: [0.42, 0, 0.58, 1]
+       },
+    },
+  };
+
+  return (
+    <Disclosure.Panel className="sm:hidden bg-galactic-primary border-t-2 border-b-2">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={revealVariant}
+            key="mobile-nav"
+          >
+            <div className="space-y-1 pb-3 pt-2 font-bold">
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-50 py-2 pl-3 pr-4 text-base "
+              >
+                Home
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
+              >
+                Events
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
+              >
+                News
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
+              >
+                Profile
+              </Disclosure.Button>
+
+              <SearchBar classes="w-2/3 pb-2 pl-2" />
+            </div>
+            <div className="border-t border-gray-200 pb-3 pt-4">
+              <div className="flex items-center px-4">
+                <div className="flex-shrink-0">
+                  <Image
+                    alt=""
+                    width={32}
+                    height={32}
+                    src={userAvatar}
+                    className="h-14 w-14 rounded-full border-2 border-galactic-deepCyanGreen"
+                  />
+                </div>
+                <div className="ml-3">
+                  <div className="text-base font-bold text-galactic-deepCyanGreen">
+                    ThatFla$hyBoi
+                  </div>
+                  <div className="text-sm font-medium text-galactic-text">
+                    Joshua Smith
+                  </div>
+                </div>
+              </div>
+              <div className="mt-3 space-y-1 font-bold">
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block px-4 py-2 text-base duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
+                >
+                  Your Profile
+                </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block px-4 py-2 text-base duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
+                >
+                  Settings
+                </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block px-4 py-2 text-base duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-100 hover:text-gray-800"
+                >
+                  Sign out
+                </Disclosure.Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Disclosure.Panel>
   );
 };

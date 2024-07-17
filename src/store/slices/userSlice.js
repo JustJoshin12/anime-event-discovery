@@ -1,3 +1,4 @@
+// In store/authSlice.js or similar
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signin, register } from '../../utils/auth'; 
 
@@ -33,6 +34,9 @@ const userSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem('jwt');
     },
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -65,5 +69,15 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, setUserInfo } = userSlice.actions;
 export default userSlice.reducer;
+
+// Function to load user info from local storage
+export const loadUserInfo = () => (dispatch) => {
+  const token = localStorage.getItem('jwt');
+  if (token) {
+    // Decode token to get user info, or fetch user info from an endpoint
+    const userInfo = { token }; // Simplified, replace with actual user info
+    dispatch(setUserInfo(userInfo));
+  }
+};

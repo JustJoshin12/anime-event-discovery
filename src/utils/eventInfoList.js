@@ -4,77 +4,82 @@ export const eventInfoList = [
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
-        name:"Anime central",
-        description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua fghg gdff fdgdfg dfg ",
-        imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
-    },
-    {
-        id:0,
+        id:1,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:2,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:3,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:4,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:5,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:6,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:7,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
+
     {
-        id:0,
+        id:8,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
     {
-        id:0,
+        id:9,
         name:"Anime central",
         description:"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua",
         imageUrl:"/images/eventImages/animeCentral.jpg",
-        keywords:["huge crowd","great cosplays", "lots of mechadise"]
+        keywords:["huge crowd","great cosplays", "lots of mechadise"],
+        date: "2024-07-16T14:00:00Z",
     },
+
 ]
 

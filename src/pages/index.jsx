@@ -13,15 +13,15 @@ function MyApp({ Component, pageProps }) {
     setOpenDialog(true);
   };
 
-  
-
-
-
-
   return (
     <div>
-      <LoginPage open={openDialog} setOpenDialog={showDialogPopup}  />
-      {openDialog && <DialogPopUp openDialog={openDialog} showDialogPopup={showDialogPopup} />}
+      <LoginPage open={openDialog} setOpenDialog={showDialogPopup} />
+      {openDialog && (
+        <DialogPopUp
+          openDialog={openDialog}
+          showDialogPopup={showDialogPopup}
+        />
+      )}
     </div>
   );
 }
