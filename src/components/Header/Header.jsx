@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
-
+import { useSelector } from "react-redux";
 import { FreeMode, Pagination } from "swiper/modules";
 import { eventInfoList } from "@/src/utils/eventInfoList";
 import { Card } from "../UI/EventCard";
@@ -32,6 +32,7 @@ const fancyFadeInVariant = {
   },
 };
 export const HeroSection = () => {
+  
   return (
     <section className="flex-1">
       <AnimatePresence>
@@ -66,15 +67,15 @@ export const HeroSection = () => {
                 variants={fancyFadeInVariant}
                 custom={1}
               >
-                <h1 className="text-5xl font-[Poppins-Bold] font-extrabold tracking-tight md:tracking-normal xl:tracking-wide text-galactic-lightElectricPurple md:text-6xl lg:text-7xl xl:text-8xl">
-                  Anime Event <br /> Discovery
+                <h1 className="pt-4 sm:pt-0 text-5xl  font-black tracking-tight md:tracking-normal xl:tracking-wider text-galactic-lightElectricPurple md:text-6xl lg:text-7xl xl:text-8xl">
+                  Anime Event <br /> Discovery 
                 </h1>
                 <Image
                   src={AnimeCollageImage}
                   alt=""
                   width={100000}
                   height={100000}
-                  className="max-w-72 lg:max-w-96"
+                  className="max-w-56 md:max-w-64 lg:max-w-90"
                 />
               </motion.div>
               <motion.div
@@ -88,7 +89,7 @@ export const HeroSection = () => {
                 <h2 className="mt-4 font-bold font-[Special-Elite] text-xl xl:text-5xl leading-8 text-galactic-secondary">
                   "Discover the Anime World Near You"
                 </h2>
-                <p className="mt-4 font-semibold text-lg xl:text-xl leading-8 text-gray-300">
+                <p className="mt-4 md:px-20 font-semibold text-lg xl:text-xl leading-8 text-gray-300">
                   Discover exciting upcoming anime events near you, read
                   detailed reviews from fellow fans, and stay updated with the
                   latest anime news and releases. Stay with our vibrant
@@ -163,7 +164,7 @@ const UpcomingEvents = () => {
         </Swiper>
       </div>
       <div className="mt-10 px-6 xl:px-10">
-        <Button text="View all Upcoming event" outlineColor="bg-galactic-secondary" />
+        <Button text="View all Upcoming Event" outlineColor="bg-galactic-secondary" />
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadUserInfo } from "../store/slices/userSlice";
 import DialogPopUp from "../components/UI/DialogPopUp";
 import ProtectedLayout from "../components/ProtectedRoute/ProtectedLayout";
+import store from "../store/rootReducer.js"
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps, router }) {

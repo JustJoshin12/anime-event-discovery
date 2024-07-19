@@ -30,19 +30,19 @@ const formatDate = (isoDateString, formatType = "default") => {
 export const Card = ({ data }) => {
   const [isDescriptionHovered, setIsDescriptionHovered] = useState(false);
   const [isTagsHovered, setIsTagsHovered] = useState(false);
-  const selectedFormat = "format3";
+  const selectedFormat = "format4";
 
   return (
     <motion.div
       whileHover="hover"
       className="w-[220px] h-[300px] relative border-2 rounded-badge"
     >
-      <div className="h-[50%] p-4 gap-3 flex flex-col justify-center bg-galactic-primary/80 rounded-b-badge w-full absolute bottom-0 text-galactic-text ">
-        <h3 className="text-xl font-semibold text-white">{data.name}</h3>
-        <div className="font-semibold flex  justify-between">
+      <div className="h-[50%] font=[Poppins-bold] p-4 gap-3 flex flex-col justify-center bg-galactic-primary/80 rounded-b-badge w-full absolute bottom-0 text-galactic-text ">
+        <h3 className="text-xl font-semibold text-white text-center">{data.name}</h3>
+        <div className="font-semibold flex  justify-around">
           <span>{formatDate(data.date, selectedFormat)}</span>
           <span 
-          className="mr-3 font-semibold hover:cursor-pointer"
+          className="font-semibold hover:cursor-pointer"
           onMouseEnter={() => setIsTagsHovered(true)}
           onMouseLeave={() => setIsTagsHovered(false)}
           >Reviews</span>

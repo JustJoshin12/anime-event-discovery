@@ -23,7 +23,6 @@ const SimpleFloatingNav = () => {
 };
 
 const Logo = () => {
-  // Temp logo from https://logoipsum.com/
   return (
     <svg
       width="24"

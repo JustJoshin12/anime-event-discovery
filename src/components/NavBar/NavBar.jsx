@@ -5,17 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import SearchBar from "../UI/SearchBar";
 import Image from "next/image";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const logo = "/images/websiteLogo.png";
-const userAvatar = "/images/avatarIcons/tengen.gif";
 
+
+
+///NavBar Component///
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  
   const toggleMenu = () => {
-     setIsOpen(prevState => !prevState)
-  }
+    setIsOpen((prevState) => !prevState);
+  };
   return (
     <Disclosure as="nav" className="shadow-2xl bg-galactic-background/65 py-2">
       <div className="mx-auto max-w-[1500px] px-1 sm:px-2 xl:px-8">
@@ -31,30 +34,30 @@ export default function NavBar() {
               />
             </div>
             <div className="hidden text-base lg:text-lg lg:ml-6 sm:flex lg:space-x-5 xl:space-x-16  text-galactic-accent">
-              <a
-                href="#"
+              <Link
+                href="/home"
                 className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
               >
                 Home
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/events"
                 className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
               >
                 Events
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/news"
                 className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
               >
                 News
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/profile"
                 className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
               >
                 Profile
-              </a>
+              </Link>
             </div>
           </div>
           {/*Search Bar*/}
@@ -88,8 +91,14 @@ export default function NavBar() {
   );
 }
 
+///User Avatar Badge///
+
 const UserProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector((state) => state.user); 
+  // const userData = user.userInfo.Account;
+  const userAvatar = `/images/avatarIcons/tengen.gif`;
+
 
   const glowingBorder = {
     initial: { borderColor: "#00f6ff", boxShadow: "0 0 10px #00f6ff" },
@@ -172,7 +181,7 @@ const UserProfileMenu = () => {
                 {({ active }) => (
                   <a
                     href="#"
-                    className={`block px-4 py-2 text-sm ${
+                    className={`duration-200 block px-4 py-2 text-sm ${
                       active ? "bg-gray-100" : "text-galactic-text"
                     }`}
                   >
@@ -184,7 +193,7 @@ const UserProfileMenu = () => {
                 {({ active }) => (
                   <a
                     href="#"
-                    className={`block px-4 py-2 text-sm ${
+                    className={`duration-200 block px-4 py-2 text-sm ${
                       active ? "bg-gray-100" : "text-galactic-text"
                     }`}
                   >
@@ -196,7 +205,7 @@ const UserProfileMenu = () => {
                 {({ active }) => (
                   <a
                     href="#"
-                    className={`block px-4 py-2 text-sm ${
+                    className={`duration-200 block px-4 py-2 text-sm ${
                       active ? "bg-gray-100" : "text-galactic-text"
                     }`}
                   >
@@ -212,7 +221,15 @@ const UserProfileMenu = () => {
   );
 };
 
+///MobileNavBar Component///
+
 const MobileNavBar = ({ isOpen }) => {
+
+  const user = useSelector((state) => state.user); 
+// const userData = user.userInfo.Account
+// const userAvatar = `/images/avatarIcons/${userData.avatar}.gif`;
+const userAvatar = "/images/avatarIcons/tengen.gif"
+
   const revealVariant = {
     hidden: { height: 0, opacity: 0 },
     visible: {
@@ -226,10 +243,10 @@ const MobileNavBar = ({ isOpen }) => {
     exit: {
       height: 0,
       opacity: 0,
-      transition: { 
-        duration: 0.4, 
-        ease: [0.42, 0, 0.58, 1]
-       },
+      transition: {
+        duration: 0.4,
+        ease: [0.42, 0, 0.58, 1],
+      },
     },
   };
 

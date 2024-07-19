@@ -50,6 +50,7 @@ const SignupPage = () => {
     setIsOpen(false);
   };
 
+
   //Form functions
   const handleRegistration = (userData) => {
     dispatch(signUp(userData))
@@ -78,7 +79,6 @@ const SignupPage = () => {
       email: values.email,
       avatar: selectedAvatar.name,
       dob: values.dob,
-      location: values.location,
       createTime: createTime,
     });
     resetForm();
@@ -271,7 +271,7 @@ const SignupPage = () => {
                       className="form-input w-full px-4 py-2 border rounded-full"
                     />
                   </motion.div>
-                  <motion.div variants={inputVariants}>
+                  {/* <motion.div variants={inputVariants}>
                     <label htmlFor="location" className="block mb-2">
                       Location
                     </label>
@@ -286,7 +286,7 @@ const SignupPage = () => {
                       onChange={handleChange}
                       className="form-input w-full px-4 py-2 border rounded-full"
                     />
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               )}
             </AnimatePresence>

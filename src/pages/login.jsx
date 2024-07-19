@@ -25,7 +25,7 @@ function LoginPage() {
     router.push("/loading");
     setTimeout(() => {
       router.push("/home");
-    }, 8000);
+    }, 4000);
   };
 
   const handleRegistration = ({ email, password }) => {

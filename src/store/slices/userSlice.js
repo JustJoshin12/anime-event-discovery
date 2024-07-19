@@ -21,6 +21,35 @@ export const signUp = createAsyncThunk('user/signUp', async (userData, { rejectW
   }
 });
 
+
+
+// Functions for each state
+
+const setPending = (state) => {
+  state.status = "loading";
+};
+
+const setFulfilledSignUp = (state, action) => {
+  state.status = "succeeded";
+  state.items = action.payload;
+  //either take user to the login page or auto log them in
+};
+
+const setFulfilledLogin = (state, action) => {
+  state.status = 'succeeded';
+        state.userInfo = action.payload;
+        // Save the token to local storage
+        // if (action.payload.token) {
+        //   localStorage.setItem('jwt', action.payload.token);
+        // }
+}
+
+const setRejected = (state, action) => {
+  state.status = "failed";
+  state.error = action.error.message;
+};
+
+
 // Slice for user state
 const userSlice = createSlice({
   name: 'user',
@@ -40,32 +69,12 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signIn.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(signIn.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.userInfo = action.payload;
-        // Save the token to local storage
-        if (action.payload.token) {
-          localStorage.setItem('jwt', action.payload.token);
-        }
-      })
-      .addCase(signIn.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload;
-      })
-      .addCase(signUp.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(signUp.fulfilled, (state) => {
-        state.status = 'succeeded';
-        // Handle sign-up success (e.g., show a success message or log in the user)
-      })
-      .addCase(signUp.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload;
-      });
+      .addCase(signIn.pending, setPending)
+      .addCase(signIn.fulfilled, setFulfilledLogin)
+      .addCase(signIn.rejected, setRejected)
+      .addCase(signUp.pending, setPending)
+      .addCase(signUp.fulfilled, setFulfilledSignUp)
+      .addCase(signUp.rejected, setRejected);
   },
 });
 

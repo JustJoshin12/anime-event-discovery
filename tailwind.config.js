@@ -25,6 +25,13 @@ module.exports = {
           complementaryOrange: '#FF7043',
         },
       },
+      backgroundImage: {
+        'cosmic-1': 'linear-gradient(135deg, #4A00C8, #7A33EA, #03DAC6, #FF4081)',
+        'cosmic-2': 'linear-gradient(135deg, #121212, #009688, #8E24AA, #FDD835)',
+        'cosmic-3': 'linear-gradient(135deg, #FF4081, #6200EA, #009688, #D8B6FC)',
+        'cosmic-4': 'linear-gradient(135deg, #FDD835, #BB86FC, #66E8D4)',
+        'cosmic-5': 'linear-gradient(135deg, #6200EA, #FF7043, #4A00C8, #FF4081)',
+      },
     },
   },
   plugins: [
