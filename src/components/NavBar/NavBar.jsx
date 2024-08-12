@@ -4,13 +4,11 @@ import { Disclosure, Menu } from "@headlessui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import SearchBar from "../UI/SearchBar";
-import Image from "next/image";
+import { Image } from "../shared/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const logo = "/images/websiteLogo.png";
-
-
 
 ///NavBar Component///
 
@@ -68,7 +66,7 @@ export default function NavBar() {
           <div className="mr-2 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <Disclosure.Button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => toggleMenu()}
               className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             >
               <span className="absolute -inset-0.5" />
@@ -95,10 +93,9 @@ export default function NavBar() {
 
 const UserProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = useSelector((state) => state.user); 
+  const user = useSelector((state) => state.user);
   // const userData = user.userInfo.Account;
   const userAvatar = `/images/avatarIcons/tengen.gif`;
-
 
   const glowingBorder = {
     initial: { borderColor: "#00f6ff", boxShadow: "0 0 10px #00f6ff" },
@@ -224,11 +221,10 @@ const UserProfileMenu = () => {
 ///MobileNavBar Component///
 
 const MobileNavBar = ({ isOpen }) => {
-
-  const user = useSelector((state) => state.user); 
-// const userData = user.userInfo.Account
-// const userAvatar = `/images/avatarIcons/${userData.avatar}.gif`;
-const userAvatar = "/images/avatarIcons/tengen.gif"
+  // const user = useSelector((state) => state.user);
+  // const userData = user.userInfo.Account
+  // const userAvatar = `/images/avatarIcons/${userData.avatar}.gif`;
+  const userAvatar = "/images/avatarIcons/tengen.gif";
 
   const revealVariant = {
     hidden: { height: 0, opacity: 0 },
@@ -259,7 +255,7 @@ const userAvatar = "/images/avatarIcons/tengen.gif"
             animate="visible"
             exit="exit"
             variants={revealVariant}
-            key="mobile-nav"
+            key="mobile-navbar"
           >
             <div className="space-y-1 pb-3 pt-2 font-bold">
               <Disclosure.Button

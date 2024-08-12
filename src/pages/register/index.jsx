@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import { useFormAndValidation } from "../hooks/useFormAndValidation";
+import { Image } from "../../components/shared/image";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../store/slices/userSlice";
+import { signUp } from "../../store/slices/userSlice";
 import { motion, AnimatePresence } from "framer-motion";
-import avatarIconList from "../utils/avatarList";
-import DialogPopUp from "../components/UI/DialogPopUp";
+import avatarIconList from "../../utils/avatarList";
+import DialogPopUp from "../../components/UI/DialogPopUp";
 
 const SignupPage = () => {
   const router = useRouter();

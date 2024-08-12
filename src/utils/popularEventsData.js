@@ -1,6 +1,6 @@
-export const items = [
+export const popularEventsData = [
     {
-      id: 1,
+      id: 16,
       title: "Anime Central",
       location: "5555 N River Rd, Rosemont, IL 60018",
       rating: 92,
@@ -13,7 +13,7 @@ export const items = [
       website:"https://www.acen.org/",
     },
     {
-      id: 2,
+      id: 26,
       title: "Anime Expo",
       location: "1201 S Figueroa St, Los Angeles, CA 90015",
       rating: 92,
@@ -26,7 +26,7 @@ export const items = [
       website:"https://www.anime-expo.org/",
     },
     {
-      id: 3,
+      id: 36,
       title: "Dream Con",
       location: "500 E. Cesar Chavez St. Austin, TX 78701",
       rating: 92,
@@ -39,7 +39,7 @@ export const items = [
       website:"https://www.dreamconvention.com/",
     },
     {
-      id: 4,
+      id: 46,
       title: "Anime Magic",
       rating: 92,
       location: "5555 N River Rd, Rosemont, IL 60018",

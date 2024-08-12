@@ -1,15 +1,20 @@
-import NavBar from "../NavBar/NavBar";
-import Image from "next/image";
+
+import NavBar from "../../components/navBar/NavBar";
+import { Image } from "@/src/components/shared/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
-import { useSelector } from "react-redux";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { eventInfoList } from "@/src/utils/eventInfoList";
-import { Card } from "../UI/EventCard";
-import Button from "../UI/Button";
+import { Card } from "../../components/UI/EventCard";
+import Button from "../../components/UI/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchUpcomingEvents } from "@/src/store/slices/eventSlice";
+import { LoadingComponentAnimation } from "../../components/UI/LoadingComponent";
+import { FailedApiComponent } from "../../components/UI/FailedComponent";
 
 const HeroImage = "/images/heroImage2.jpg";
 const AnimeCollageImage = "/images/animeCharacter2.png";
@@ -21,8 +26,8 @@ const fancyFadeInVariant = {
     scale: 1,
     transition: {
       delay: i * 0.3, // 0.3 seconds delay between each item
-      duration: 0.6, 
-      ease: [0.42, 0, 0.58, 1], 
+      duration: 0.6,
+      ease: [0.42, 0, 0.58, 1],
     },
   }),
   exit: {
@@ -31,12 +36,99 @@ const fancyFadeInVariant = {
     transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 };
-export const HeroSection = () => {
-  
+
+
+// Upcoming Events Component
+
+const UpcomingEvents = () => {
+  const dispatch = useDispatch();
+  const upcomingEventsState = useSelector((state) => state.event.upcomingItems);
+  const { status, events, error } = upcomingEventsState;
+  const state = "Rhode Island";
+  useEffect(() => {
+    dispatch(fetchUpcomingEvents({state}));
+  }, [dispatch]);
+  console.log(upcomingEventsState);
+
+  if (status === "loading") return <LoadingComponentAnimation />;
+  if (status === "failed") return <FailedApiComponent error={error} />;
+
   return (
-    <section className="flex-1">
+    <div className="py-8 ">
+      <h2 className="text-galactic-text text-3xl lg:text-5xl font-extrabold pb-16 text-center">
+        Upcoming Events
+      </h2>
+      <div className="relative overflow-hidden px-6 min-[425px]:px-8  lg:px-6 xl:px-10">
+        <Swiper
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            425: {
+              slidesPerView: 1.25,
+              spaceBetween: 2,
+            },
+            640: {
+              slidesPerView: 2.5,
+              spaceBetween: 12,
+            },
+
+            800: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 2,
+            },
+          }}
+          autoplay={{
+            delay: 0,// 2.5 seconds delay between slides
+            disableOnInteraction: false, // Continue autoplay after user interactions
+          }}
+          freeMode={true}
+          speed={6000}
+          loop={true}
+          modules={[FreeMode, Pagination, Autoplay]}
+          className="flex"
+        >
+          {eventInfoList.map((event, index) => {
+           
+            return (
+              <SwiperSlide key={event.id || `event-${index}`}>
+                <Card
+                  key={event.id} // Ensure the key here is unique
+                  data={event}
+                  imgSrc={event.imageUrl}
+                  name={event.name}
+                  description={event.description}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+      <div className="mt-10 px-6 xl:px-10">
+        <Button
+          text="View all Upcoming Event"
+          outlineColor="bg-galactic-secondary"
+          bgColor='bg-galactic-softLavender/50'
+        />
+      </div>
+    </div>
+  );
+};
+
+
+
+// Hero Section Component
+
+ const HeroSection = () => {
+  return (
+    <div className="flex-1">
       <AnimatePresence>
-        <motion.header
+        <motion.div
           className="absolute inset-x-0 top-0 z-50"
           initial="hidden"
           animate="visible"
@@ -45,14 +137,12 @@ export const HeroSection = () => {
           custom={0}
         >
           <NavBar />
-        </motion.header>
+        </motion.div>
 
         <div className="relative isolate overflow-hidden pt-14">
           <Image
             alt=""
             src={HeroImage}
-            width={100000}
-            height={100000}
             loading="eager"
             className="absolute inset-0 -z-10 h-full w-full object-cover"
             style={{ width: "100%", height: "100%" }}
@@ -68,13 +158,11 @@ export const HeroSection = () => {
                 custom={1}
               >
                 <h1 className="pt-4 sm:pt-0 text-5xl  font-black tracking-tight md:tracking-normal xl:tracking-wider text-galactic-lightElectricPurple md:text-6xl lg:text-7xl xl:text-8xl">
-                  Anime Event <br /> Discovery 
+                  Anime Event <br /> Discovery
                 </h1>
                 <Image
                   src={AnimeCollageImage}
                   alt=""
-                  width={100000}
-                  height={100000}
                   className="max-w-56 md:max-w-64 lg:max-w-90"
                 />
               </motion.div>
@@ -109,63 +197,8 @@ export const HeroSection = () => {
           </div>
         </div>
       </AnimatePresence>
-    </section>
-  );
-};
-
-const UpcomingEvents = () => {
-  return (
-    <div className="py-8 ">
-      <h2 className="text-galactic-text text-3xl lg:text-5xl font-extrabold pb-16 text-center">
-        Upcoming Events
-      </h2>
-      <div className="relative overflow-hidden px-6 min-[425px]:px-8  lg:px-6 xl:px-10">
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            425: {
-              slidesPerView: 1.25,
-              spaceBetween: 2,
-            },
-            640: {
-              slidesPerView: 2.5,
-              spaceBetween: 12,
-            },
-
-            800: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 2,
-            },
-          }}
-          freeMode={true}
-          modules={[FreeMode, Pagination]}
-          className="flex"
-        >
-          {eventInfoList.map((event, index) => {
-            return (
-              <SwiperSlide key={index} className="">
-                <Card
-                  key={event.id}
-                  data={event}
-                  imgSrc={event.imageUrl}
-                  name={event.name}
-                  description={event.description}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
-      <div className="mt-10 px-6 xl:px-10">
-        <Button text="View all Upcoming Event" outlineColor="bg-galactic-secondary" />
-      </div>
     </div>
   );
 };
+
+export default HeroSection;

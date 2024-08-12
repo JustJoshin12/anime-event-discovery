@@ -1,14 +1,14 @@
 import React from "react";
 
-const Button = ({ onClick, text, outlineColor }) => {
-  return <DrawOutlineButton onClick={onClick} outlineColor={outlineColor}>{text}</DrawOutlineButton>;
+const Button = ({ onClick, text, outlineColor, bgColor }) => {
+  return <DrawOutlineButton onClick={onClick} outlineColor={outlineColor} bgColor={bgColor}>{text}</DrawOutlineButton>;
 };
 
-const DrawOutlineButton = ({ children, onClick, outlineColor, ...rest }) => {
+const DrawOutlineButton = ({ children, onClick, outlineColor, bgColor, ...rest }) => {
   return (
     <button
       {...rest}
-      className="group relative bg-galactic-softLavender/50 rounded px-4 py-2 font-medium text-slate-100 transition-colors duration-[400ms] hover:text-indigo-300"
+      className={`group relative ${bgColor} rounded px-4 py-2 font-medium text-slate-100 transition-colors duration-[400ms]`}
       onClick={onClick}
     >
       <span>{children}</span>

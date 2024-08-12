@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Image } from "@/src/components/shared/image";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "@/src/store/slices/userSlice";
 import BackgroundChanger from "@/src/components/UI/BackgroundChanger";

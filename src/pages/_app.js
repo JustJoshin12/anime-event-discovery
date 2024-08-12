@@ -5,7 +5,7 @@ import { wrapper } from '../store/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUserInfo } from "../store/slices/userSlice";
 import DialogPopUp from "../components/UI/DialogPopUp";
-import ProtectedLayout from "../components/ProtectedRoute/ProtectedLayout";
+import ProtectedLayout from "../components/protectedRoute/ProtectedLayout";
 import store from "../store/rootReducer.js"
 import "../styles/globals.css";
 
