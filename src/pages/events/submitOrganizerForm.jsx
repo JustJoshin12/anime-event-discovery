@@ -1,9 +1,8 @@
 import { Image } from "../../components/shared/image";
 
-const eventFormPage = () => {
-    return (<EventForm/>)
-  };
-
+const EventFormPage = () => {
+  return <EventForm />;
+};
 
 const EventForm = () => {
   return (
@@ -253,6 +252,4 @@ const EventForm = () => {
   );
 };
 
-
-
-export default eventFormPage;
+export default EventFormPage;

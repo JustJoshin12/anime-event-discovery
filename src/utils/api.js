@@ -1,9 +1,9 @@
 import { checkResponse } from "./checkresponse";
 
-const baseUrl = "https://6975-67-165-141-227.ngrok-free.app";
-
+const baseUrl = "https://4868-67-165-141-227.ngrok-free.app";
+const newBaseUrl = "https://ea9b-67-165-141-227.ngrok-free.app"
 export const lastesNewsApi = () => {
-    return fetch(`${baseUrl}/lastestNews`, {
+    return fetch(`${newBaseUrl}/lastestNews`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -15,14 +15,14 @@ export const lastesNewsApi = () => {
 };
 
 
-export const upcomingEventsApi = ({state}) => {
+export const upcomingEventsApi = () => {
     return fetch(`${baseUrl}/readAllDocuments/UpcomingEvents`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-        body: JSON.stringify({state}),
+        body: JSON.stringify({})
     }).then((res) => {
         return checkResponse(res);
     });
@@ -30,11 +30,12 @@ export const upcomingEventsApi = ({state}) => {
 
 export const popularEventsApi = () => {
     return fetch(`${baseUrl}/readAllDocuments/PopularEvents`, {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
             // authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        }
+        },
+        body: JSON.stringify({})
     }).then((res) => {
         return checkResponse(res);
     });

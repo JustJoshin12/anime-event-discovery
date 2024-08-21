@@ -37,24 +37,30 @@ export const Card = ({ data }) => {
       whileHover="hover"
       className="w-[220px] h-[300px] relative border-2 rounded-badge"
     >
-      <div className="h-[50%] font=[Poppins-bold] p-4 gap-3 flex flex-col justify-center bg-galactic-primary/80 rounded-b-badge w-full absolute bottom-0 text-galactic-text ">
-        <h3 className="text-xl font-semibold text-white text-center">{data.name}</h3>
-        <div className="font-semibold flex  justify-around">
+      <div className="h-[50%] p-4 flex flex-col justify-center bg-galactic-primary/80 rounded-b-badge w-full absolute bottom-0 text-galactic-text space-y-3">
+        <h3 className="text-xl font-semibold text-white text-center">
+          {data.name}
+        </h3>
+        <div className="flex justify-around items-center">
           <span>{formatDate(data.date, selectedFormat)}</span>
-          <span 
-          className="font-semibold hover:cursor-pointer"
-          onMouseEnter={() => setIsTagsHovered(true)}
-          onMouseLeave={() => setIsTagsHovered(false)}
-          >Reviews</span>
+          <span className="border-r-2 border-slate-400 h-full mx-2"></span>
+          <span
+            className="font-semibold hover:cursor-pointer"
+            onMouseEnter={() => setIsTagsHovered(true)}
+            onMouseLeave={() => setIsTagsHovered(false)}
+          >
+            Reviews
+          </span>
         </div>
         <p
-          className="text-lg font-semibold text-center text-slate-300 hover:cursor-pointer"
+          className="text-lg font-semibold text-center text-slate-300 hover:cursor-pointer mt-2"
           onMouseEnter={() => setIsDescriptionHovered(true)}
           onMouseLeave={() => setIsDescriptionHovered(false)}
         >
           Description
         </p>
       </div>
+
       <motion.div
         initial={{
           bottom: "0%",
@@ -93,7 +99,7 @@ export const Card = ({ data }) => {
           {data.description}
         </motion.div>
       )}
-        {isTagsHovered && (
+      {isTagsHovered && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

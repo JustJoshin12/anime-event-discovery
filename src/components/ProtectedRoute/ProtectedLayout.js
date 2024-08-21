@@ -17,7 +17,7 @@ const ProtectedLayout = ({ children }) => {
   console.log(isAuthenticated);
 
   if (!isAuthenticated) {
-    return <LoadingScreenPage/>; // or a loading spinner
+    return ; // or a loading spinner
   }
 
   return <>{children}</>;

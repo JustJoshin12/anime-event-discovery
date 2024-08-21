@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Disclosure, Menu } from "@headlessui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import SearchBar from "../UI/SearchBar";
+import SearchBar from "../UI/NavSearchBar";
 import { Image } from "../shared/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -96,6 +96,7 @@ const UserProfileMenu = () => {
   const user = useSelector((state) => state.user);
   // const userData = user.userInfo.Account;
   const userAvatar = `/images/avatarIcons/tengen.gif`;
+  console.log(user)
 
   const glowingBorder = {
     initial: { borderColor: "#00f6ff", boxShadow: "0 0 10px #00f6ff" },
@@ -221,9 +222,9 @@ const UserProfileMenu = () => {
 ///MobileNavBar Component///
 
 const MobileNavBar = ({ isOpen }) => {
-  // const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
   // const userData = user.userInfo.Account
-  // const userAvatar = `/images/avatarIcons/${userData.avatar}.gif`;
+  // const userAvatar = `/images/avatarIcons/${userData?.avatar}.gif`;
   const userAvatar = "/images/avatarIcons/tengen.gif";
 
   const revealVariant = {
@@ -247,7 +248,7 @@ const MobileNavBar = ({ isOpen }) => {
   };
 
   return (
-    <Disclosure.Panel className="sm:hidden bg-galactic-primary border-t-2 border-b-2">
+    <Disclosure.Panel className="sm:hidden bg-galactic-primary border-t-2 border-b-2 ">
       <AnimatePresence>
         {isOpen && (
           <motion.div

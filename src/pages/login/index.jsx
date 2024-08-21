@@ -16,24 +16,22 @@ function LoginPage() {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
-  const { status, error } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation();
+  const [showPassword, setShowPassword] = useState(false);
 
-  const showLoadingScreen = () => {
-    router.push("/loading");
-    setTimeout(() => {
-      router.push("/home");
-    }, 4000);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleRegistration = ({ email, password }) => {
+  const handleLogin = ({ email, password }) => {
     dispatch(signIn({ email, password }))
       .unwrap()
       .then((res) => {
         console.log(res);
-        showLoadingScreen();
+        router.push("/home");
       })
       .catch((err) => {
         console.error(err);
@@ -46,7 +44,7 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
-    handleRegistration({ email: values.email, password: values.password });
+    handleLogin({ email: values.email, password: values.password });
   };
 
   return (
@@ -124,11 +122,11 @@ function LoginPage() {
                     </a>
                   </div>
                 </div>
-                <div className="mt-2">
+                <div className="mt-2 relative">
                   <input
                     id="password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     minLength="5"
                     maxLength="12"
                     autoComplete="current-password"
@@ -137,6 +135,13 @@ function LoginPage() {
                     onChange={handleChange}
                     className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                   />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm text-indigo-400 hover:text-indigo-300 focus:outline-none"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
                 </div>
               </div>
 

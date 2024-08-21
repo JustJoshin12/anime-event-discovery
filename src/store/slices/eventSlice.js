@@ -14,8 +14,8 @@ export const fetchPopularEvents = createAsyncThunk(
 // Async thunk for Fetching Upcoming Events
 export const fetchUpcomingEvents = createAsyncThunk(
     "events/fetchUpcomingEvents",
-    async ({ state}) => {
-        const response = await api.upcomingEventsApi({ state });
+    async () => {
+        const response = await api.upcomingEventsApi();
         return response;
     }
 );

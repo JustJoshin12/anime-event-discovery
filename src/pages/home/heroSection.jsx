@@ -44,9 +44,9 @@ const UpcomingEvents = () => {
   const dispatch = useDispatch();
   const upcomingEventsState = useSelector((state) => state.event.upcomingItems);
   const { status, events, error } = upcomingEventsState;
-  const state = "Rhode Island";
+  
   useEffect(() => {
-    dispatch(fetchUpcomingEvents({state}));
+    dispatch(fetchUpcomingEvents());
   }, [dispatch]);
   console.log(upcomingEventsState);
 
@@ -135,6 +135,7 @@ const UpcomingEvents = () => {
           exit="exit"
           variants={fancyFadeInVariant}
           custom={0}
+          key="1"
         >
           <NavBar />
         </motion.div>
@@ -156,6 +157,7 @@ const UpcomingEvents = () => {
                 exit="exit"
                 variants={fancyFadeInVariant}
                 custom={1}
+                key="2"
               >
                 <h1 className="pt-4 sm:pt-0 text-5xl  font-black tracking-tight md:tracking-normal xl:tracking-wider text-galactic-lightElectricPurple md:text-6xl lg:text-7xl xl:text-8xl">
                   Anime Event <br /> Discovery
@@ -173,6 +175,7 @@ const UpcomingEvents = () => {
                 exit="exit"
                 variants={fancyFadeInVariant}
                 custom={2}
+                key="3"
               >
                 <h2 className="mt-4 font-bold font-[Special-Elite] text-xl xl:text-5xl leading-8 text-galactic-secondary">
                   "Discover the Anime World Near You"
@@ -190,6 +193,7 @@ const UpcomingEvents = () => {
                 exit="exit"
                 variants={fancyFadeInVariant}
                 custom={3}
+                key="4"
               >
                 <UpcomingEvents />
               </motion.div>
