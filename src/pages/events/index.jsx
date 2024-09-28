@@ -40,7 +40,7 @@ const EventInfoSection = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 px-20 py-44">
           <h3 className="text-6xl lg:text-8xl font-[Poppins-Bold] tracking-wider text-galactic-secondary">
-            Experience the Best in <br /> Anime Events.
+            Experience the Best in <br /> Anime Events
           </h3>
           <p className="text-white text-base lg:text-lg w-2/3 pt-10 font-[Poppins-Bold] tracking-wider">
             Welcome to the Event Section of Anime Event Discovery! Whether
@@ -150,7 +150,7 @@ const SubmitEventSection = () => {
 //Event Page Component
 
 const EventPage = () => {
-  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
   const menuItems = [
     { name: "Events", href: "/events" },
@@ -165,7 +165,7 @@ const EventPage = () => {
     <div className="flex flex-col">
       <Header />
       <main>
-        <div className="flex flex-col md:flex bg-slate-900">
+        <div className="flex flex-col lg:flex-row  bg-slate-900">
           {isTablet ? (
             <HorizontalBar menuItems={menuItems} />
           ) : (

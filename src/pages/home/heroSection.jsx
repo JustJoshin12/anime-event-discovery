@@ -1,4 +1,4 @@
-
+"use client";
 import NavBar from "../../components/navBar/NavBar";
 import { Image } from "@/src/components/shared/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,21 +37,20 @@ const fancyFadeInVariant = {
   },
 };
 
-
 // Upcoming Events Component
 
 const UpcomingEvents = () => {
   const dispatch = useDispatch();
-  const upcomingEventsState = useSelector((state) => state.event.upcomingItems);
-  const { status, events, error } = upcomingEventsState;
-  
+  const upcomingEventsState = useSelector((state) => state.event);
+  const { status, upcomingItems, error } = upcomingEventsState;
+
   useEffect(() => {
     dispatch(fetchUpcomingEvents());
   }, [dispatch]);
-  console.log(upcomingEventsState);
+  console.log(upcomingItems);
 
   if (status === "loading") return <LoadingComponentAnimation />;
-  if (status === "failed") return <FailedApiComponent error={error} />;
+  // if (status === "failed") return <FailedApiComponent error={error} />;
 
   return (
     <div className="py-8 ">
@@ -84,7 +83,7 @@ const UpcomingEvents = () => {
             },
           }}
           autoplay={{
-            delay: 0,// 2.5 seconds delay between slides
+            delay: 0, // 2.5 seconds delay between slides
             disableOnInteraction: false, // Continue autoplay after user interactions
           }}
           freeMode={true}
@@ -93,16 +92,13 @@ const UpcomingEvents = () => {
           modules={[FreeMode, Pagination, Autoplay]}
           className="flex"
         >
-          {eventInfoList.map((event, index) => {
-           
+          {upcomingItems.map((event, index) => {
+            console.log(event.images.card);
             return (
-              <SwiperSlide key={event.id || `event-${index}`}>
+              <SwiperSlide key={event._id || `event-${index}`}>
                 <Card
-                  key={event.id} // Ensure the key here is unique
+                  key={event._id} // Ensure the key here is unique
                   data={event}
-                  imgSrc={event.imageUrl}
-                  name={event.name}
-                  description={event.description}
                 />
               </SwiperSlide>
             );
@@ -113,18 +109,16 @@ const UpcomingEvents = () => {
         <Button
           text="View all Upcoming Event"
           outlineColor="bg-galactic-secondary"
-          bgColor='bg-galactic-softLavender/50'
+          bgColor="bg-galactic-softLavender/50"
         />
       </div>
     </div>
   );
 };
 
-
-
 // Hero Section Component
 
- const HeroSection = () => {
+const HeroSection = () => {
   return (
     <div className="flex-1">
       <AnimatePresence>

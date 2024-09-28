@@ -20,7 +20,8 @@ function LoginPage() {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation();
   const [showPassword, setShowPassword] = useState(false);
-
+  const loginState = useSelector((state) => state.user); 
+  const {status, error} = loginState;
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);

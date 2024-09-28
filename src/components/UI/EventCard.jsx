@@ -74,7 +74,7 @@ export const Card = ({ data }) => {
         }}
         className="absolute inset-0 bg-slate-200 z-10 rounded-badge"
         style={{
-          backgroundImage: `url(${data.imageUrl})`,
+          backgroundImage: `url(${data.images.card})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -107,7 +107,7 @@ export const Card = ({ data }) => {
           className="absolute bottom-12 left-[2%] transform -translate-x-1/2 bg-galactic-secondary text-white text-xs md:text-sm p-2 rounded-md z-20 w-max max-w-[200px] md:max-w-xs"
         >
           <ul>
-            {data.keywords.map((keyword, index) => (
+            {data.categories.map((keyword, index) => (
               <li key={index}>{keyword}</li>
             ))}
           </ul>

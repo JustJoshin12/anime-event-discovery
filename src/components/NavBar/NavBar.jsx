@@ -95,8 +95,9 @@ const UserProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.user);
   // const userData = user.userInfo.Account;
+  // const userAvatar = `/images/avatarIcons/${userData?.avatar}.gif`;
   const userAvatar = `/images/avatarIcons/tengen.gif`;
-  console.log(user)
+  // console.log(userData);
 
   const glowingBorder = {
     initial: { borderColor: "#00f6ff", boxShadow: "0 0 10px #00f6ff" },
@@ -262,7 +263,7 @@ const MobileNavBar = ({ isOpen }) => {
               <Disclosure.Button
                 as="a"
                 href="#"
-                className="block duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-50 py-2 pl-3 pr-4 text-base "
+                className="block duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-50 py-2 pl-3 pr-4 text-base hover:text-gray-700"
               >
                 Home
               </Disclosure.Button>

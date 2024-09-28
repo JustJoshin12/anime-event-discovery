@@ -59,6 +59,7 @@ const SignupPage = () => {
         console.log(res);
         setIsError(false);
         setOpen(true);
+        resetForm();
       })
       .catch((err) => {
         console.error(err);
@@ -80,8 +81,9 @@ const SignupPage = () => {
       avatar: selectedAvatar.name,
       dob: values.dob,
       createTime: createTime,
+      zipcode: values.zipcode,
+      state: values.state
     });
-    resetForm();
   };
 
   return (
@@ -271,22 +273,38 @@ const SignupPage = () => {
                       className="form-input w-full px-4 py-2 border rounded-full"
                     />
                   </motion.div>
-                  {/* <motion.div variants={inputVariants}>
-                    <label htmlFor="location" className="block mb-2">
-                      Location
+                  <motion.div variants={inputVariants}>
+                    <label htmlFor="zipcode" className="block mb-2">
+                      Zip Code
                     </label>
                     <input
-                      id="location"
-                      name="location"
+                      id="zipcode"
+                      name="zipcode"
+                      type="string"
+                      minLength="2"
+                      maxLength="12"
+                      required
+                      value={values.zipcode || ""}
+                      onChange={handleChange}
+                      className="form-input w-full px-4 py-2 border rounded-full"
+                    />
+                  </motion.div>
+                  <motion.div variants={inputVariants}>
+                    <label htmlFor="state" className="block mb-2">
+                      State
+                    </label>
+                    <input
+                      id="state"
+                      name="state"
                       type="text"
                       minLength="2"
                       maxLength="12"
                       required
-                      value={values.location || ""}
+                      value={values.state || ""}
                       onChange={handleChange}
                       className="form-input w-full px-4 py-2 border rounded-full"
                     />
-                  </motion.div> */}
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>

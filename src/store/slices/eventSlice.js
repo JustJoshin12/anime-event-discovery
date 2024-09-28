@@ -1,12 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from "../../utils/api";
-import { popularEventsData } from '@/src/utils/popularEventsData';
+import { popularEventsCardData,popularEventsData } from '@/src/utils/popularEventsData';
+import { eventInfoList } from '@/src/utils/eventInfoList';
+
+
 
 // Async Thunk for Fetching Popular Events
 export const fetchPopularEvents = createAsyncThunk(
     "events/fetchPopularEvents",
     async () => {
+        console.log("Fetching popular events...");
         const response = await api.popularEventsApi();
+        console.log("Response from API:", response);
         return response;
     }
 );
@@ -27,12 +32,12 @@ const setPending = (state) => {
 
 const setFulfilledPopular = (state, action) => {
     state.status = "succeeded";
-    state.popularItems = action.payload;
+    state.popularItems = action.payload?.events;
 };
 
 const setFulfilledUpcoming = (state, action) => {
     state.status = "succeeded";
-    state.upcomingItems = action.payload;
+    state.upcomingItems = action.payload?.events;
 };
 
 const setRejected = (state, action) => {
@@ -45,7 +50,7 @@ const eventSlice = createSlice({
     name: "event",
     initialState: {
         popularItems: popularEventsData,
-        upcomingItems: [],
+        upcomingItems: popularEventsCardData,
         status: "idle",
         error: null,
     },
@@ -62,3 +67,4 @@ const eventSlice = createSlice({
 });
 
 export default eventSlice.reducer;
+

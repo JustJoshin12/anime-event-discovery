@@ -1,3 +1,4 @@
+"use-client";
 import {
   AnimatePresence,
   motion,
@@ -21,14 +22,21 @@ export const OppoScroll = () => {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  const popularEventsState = useSelector((state) => state.event.popularItems);
-  const { status, events, error } = popularEventsState;
+
+  const { status, popularItems, error } = useSelector((state) => state.event);
+
   useEffect(() => {
     dispatch(fetchPopularEvents());
   }, [dispatch]);
-  console.log(popularEventsState);
+ 
+
   if (status === "loading") return <LoadingComponentAnimation />;
-  if (status === "failed") return <FailedApiComponent error={error} />;
+  // if (status === "failed") return <FailedApiComponent error={error} />;
+  if (!popularItems || popularItems.length === 0) {
+    return <div>No popular events found.</div>;
+};
+
+
 
   return (
     <div>
@@ -39,11 +47,12 @@ export const OppoScroll = () => {
         <FiArrowDown className="text-xl" />
       </div>
       <section ref={targetRef} className="flex bg-black text-white">
-        <Content content={popularEventsState} />
-        <Images
-          content={popularEventsState}
-          scrollYProgress={scrollYProgress}
-        />
+        {popularItems && (
+          <>
+            <Content content={popularItems} />
+            <Images content={popularItems} scrollYProgress={scrollYProgress} />
+          </>
+        )}
       </section>
       <div className=" text-white p-4 grid place-items-center">
         <FiArrowUp className="text-xl" />
@@ -53,13 +62,14 @@ export const OppoScroll = () => {
 };
 
 const Content = ({ content }) => {
+  console.log(content);
   return (
     <div className="max-w-[50%]">
       {content.map(
         (
           {
             id,
-            title,
+            name,
             description,
             location,
             rating,
@@ -76,7 +86,9 @@ const Content = ({ content }) => {
             }`}
           >
             <div className="flex flex-col gap-4 font-bold text-center sm:text-left border-t border-b border-gray-300 py-4">
-              <span>Location: {location}</span>
+              <span>
+                Location: {location?.street} {location?.city}
+              </span>
               <span>Rating: {rating}</span>
               <span>Attendance: {attendees}</span>
               <a href={website} className="text-galactic-primary">
@@ -85,7 +97,7 @@ const Content = ({ content }) => {
             </div>
 
             <h3 className="text-4xl xl:text-6xl font-semibold font-[Special-elite] text-center mt-6">
-              {title}
+              {name}
             </h3>
             <p className="font-medium font-[Poppins-bold] text-center w-full max-w-lg">
               {description}
@@ -103,18 +115,19 @@ const Images = ({ content, scrollYProgress }) => {
     [0, 1],
     [`-${(content.length - 1) * 100}vh`, "0vh"]
   );
+  console.log(top);
 
   return (
     <div className="h-screen overflow-hidden sticky top-0 w-full md:w-full">
       <motion.div style={{ top }} className="absolute left-0 right-0">
-        {[...content].reverse().map(({ img, id, title }, index) => (
+        {[...content].reverse().map(({ images, id, title }, index) => (
           <Image
             key={index}
             alt={title}
             width={1000000}
             height={1000000}
             className="h-screen w-full object-cover"
-            src={img}
+            src={images?.card}
           />
         ))}
       </motion.div>
@@ -127,7 +140,7 @@ const Images = ({ content, scrollYProgress }) => {
 export const VerticalAccordion = () => {
   const dispatch = useDispatch();
   const {
-    popularItems: events,
+    popularItems: data,
     status,
     error,
   } = useSelector((state) => state.event);
@@ -136,20 +149,22 @@ export const VerticalAccordion = () => {
     dispatch(fetchPopularEvents());
   }, [dispatch]);
 
+  console.log(data);
+
   useEffect(() => {
-    if (events.length > 0) {
-      setOpen(events[0].id);
+    if (data.length > 0) {
+      setOpen(data[0].id);
     }
-  }, [events]);
+  }, [data]);
 
   if (status === "loading") return <LoadingComponentAnimation />;
-  // if (status === 'failed') return <FailedApiComponent error={error} />;
+  if (status === "failed") return <FailedApiComponent error={error} />;
 
   return (
     <div>
       <div className="p-4 bg-indigo-600">
         <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full max-w-6xl mx-auto shadow overflow-hidden">
-          {events.map((item) => {
+          {data.map((item) => {
             return (
               <Panel
                 key={item.id}
@@ -157,10 +172,10 @@ export const VerticalAccordion = () => {
                 setOpen={setOpen}
                 id={item.id}
                 // Icon={item.Icon}
-                title={item.title}
-                imgSrc={item.img}
-                description={item.description}
-                link={item.website}
+                title={item?.name}
+                imgSrc={item?.images?.logo}
+                description={item?.description}
+                link={item.website_url}
                 location={item.location}
                 rating={item.rating}
               />
@@ -251,7 +266,7 @@ const Panel = ({
                 >
                   Website
                 </a>
-                <p>{location}</p>
+                <p>{location?.street}</p>
               </div>
             </motion.div>
           </motion.div>

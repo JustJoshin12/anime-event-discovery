@@ -12,6 +12,7 @@ import {
 } from "@/src/utils/popularEventsData";
 import { FaHeart, FaMapMarkerAlt, FaCalendarAlt, FaStar } from "react-icons/fa";
 import Modal from "@/src/components/shared/eventCardModal";
+import formatDate from "@/src/utils/dateFormatter";
 
 const getRandomHeight = () => {
   const heights = [280, 320, 350, 380, 420]; // Adjusted possible heights to avoid too small cards
@@ -66,12 +67,12 @@ const HeroSection = () => {
             {currentIndex === index && (
               <motion.div
                 className="absolute inset-0 w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${slide.img})` }}
+                style={{ backgroundImage: `url(${slide.images.card})` }}
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.1 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                key="1"
+                key={index}
               />
             )}
           </AnimatePresence>
@@ -88,17 +89,17 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <h1 className="text-4xl md:text-6xl font-bold">
-              {popularEventsData[currentIndex].title}
+              {popularEventsData[currentIndex].name}
             </h1>
             <p className="mt-4 text-lg md:text-2xl">
               {popularEventsData[currentIndex].description}
             </p>
-            <a
+            <button
               href={popularEventsData[currentIndex].website}
               className="mt-4 inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-white"
             >
               Visit Website
-            </a>
+            </button>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -159,7 +160,9 @@ const PopularEventsSection = () => {
         {events.map((event, index) => {
           const height = heights[index] || 350; // Default height as a fallback
           const showDescription = height >= 350;
-
+          console.log(event);
+          const selectedFormat = "format4";
+          const formattedDate = formatDate(event.date,selectedFormat)
           return (
             <motion.div
               key={event.id}
@@ -171,8 +174,8 @@ const PopularEventsSection = () => {
               onClick={() => openModal(event)}
             >
               <Image
-                src={event.imageUrl}
-                alt={event.title}
+                src={event?.images?.card}
+                alt={event?.name}
                 className="w-full object-cover"
                 style={{ height: `${height}px`, maxHeight: "450px" }}
               />
@@ -184,10 +187,10 @@ const PopularEventsSection = () => {
                   boxSizing: "border-box",
                 }}
               >
-                <h3 className="text-lg font-bold">{event.title}</h3>
+                <h3 className="text-lg font-bold">{event?.name}</h3>
                 <p className="text-sm mb-2 flex items-center">
                   <FaCalendarAlt className="mr-2" />
-                  {event.date}
+                  {formattedDate}
                 </p>
                 <div className="flex flex-wrap mb-2">
                   {event.categories.map((category, index) => (
