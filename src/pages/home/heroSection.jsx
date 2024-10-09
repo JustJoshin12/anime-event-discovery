@@ -9,7 +9,7 @@ import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { eventInfoList } from "@/src/utils/eventInfoList";
 import { Card } from "../../components/UI/EventCard";
-import Button from "../../components/UI/Button";
+import Button from "../../components/UI/OutLineButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchUpcomingEvents } from "@/src/store/slices/eventSlice";
@@ -39,7 +39,7 @@ const fancyFadeInVariant = {
 
 // Upcoming Events Component
 
-const UpcomingEvents = () => {
+export const UpcomingEvents = () => {
   const dispatch = useDispatch();
   const upcomingEventsState = useSelector((state) => state.event);
   const { status, upcomingItems, error } = upcomingEventsState;
@@ -47,10 +47,10 @@ const UpcomingEvents = () => {
   useEffect(() => {
     dispatch(fetchUpcomingEvents());
   }, [dispatch]);
-  console.log(upcomingItems);
+
 
   if (status === "loading") return <LoadingComponentAnimation />;
-  // if (status === "failed") return <FailedApiComponent error={error} />;
+  if (status === "failed") return <FailedApiComponent error={error} />;
 
   return (
     <div className="py-8 ">
@@ -93,7 +93,6 @@ const UpcomingEvents = () => {
           className="flex"
         >
           {upcomingItems.map((event, index) => {
-            console.log(event.images.card);
             return (
               <SwiperSlide key={event._id || `event-${index}`}>
                 <Card

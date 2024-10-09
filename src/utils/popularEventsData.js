@@ -149,7 +149,7 @@ export const featuredEventsData = [
         "website_url": "https://www.anime-expo.org/",
         "images": {
             "logo": "/images/heroImage5.jpg",
-            "card": "/images/heroImage5.jpg",
+            "card": "/images/missonImage2.jpg",
             "news": "https://loremflickr.com/640/480?lock=48756213612844"
         },
         "categories": [

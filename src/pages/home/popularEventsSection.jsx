@@ -115,7 +115,7 @@ const Images = ({ content, scrollYProgress }) => {
     [0, 1],
     [`-${(content.length - 1) * 100}vh`, "0vh"]
   );
-  console.log(top);
+  console.log(content);
 
   return (
     <div className="h-screen overflow-hidden sticky top-0 w-full md:w-full">

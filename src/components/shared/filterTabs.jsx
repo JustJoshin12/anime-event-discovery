@@ -25,7 +25,7 @@ const FilterTabs = ({ categories, selectedCategory, onSelectCategory }) => {
       {/* Dropdown Button */}
 
       <button
-        className="w-full px-4 py-2 font-bold tracking-wider text-galactic-deepElectricPurple bg-gray-300 text-left flex justify-between items-center rounded-md focus:outline-none"
+        className="w-full px-4 py-2 font-bold tracking-wider border-2 border-galactic-darkGray text-galactic-deepElectricPurple bg-galactic-accent text-left flex justify-between items-center rounded-md focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}

@@ -1,43 +1,72 @@
-"use-client"
+// CharacterWithMessage.jsx
+import { AnimatePresence, motion } from "framer-motion";
+import DotExpandButton from "./DotExpandButton";
+import CloseButton from "./CloseButton";
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+const CharacterWithMessage = ({ imageSrc, event, onClose }) => {
+  if (!event) return (<div className="text-5xl text-galactic-background">click on a event</div>);
 
-const CharacterWithMessage = ({imageSrc}) => {
-  // State to control when the message appears
-  const [showMessage, setShowMessage] = useState(false);
+  const characterVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 50 },
+  };
 
-  // After 3 seconds, show the message bubble
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMessage(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  const buttonVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 50 },
+  };
+
+  const messageVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 20 },
+  };
 
   return (
-    <div className="relative">
-      {/* Character fade-in animation */}
-      <motion.img
-        src={imageSrc} // Replace with your character image path
-        alt="Character"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5 }}
-        className="w-64 h-auto"
-      />
+    <div className="relative flex justify-between p-6 bg-slate-800 border border-gray-300 rounded-lg shadow-lg max-w-lg">
+      <motion.div 
+      className="absolute right-3 top-3"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={buttonVariants}
+      transition={{ duration: 0.5 }}
+      >
+        <CloseButton onClick={onClose}/>
+      </motion.div>
+      {/* Message Section (Takes up most space) */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={messageVariants}
+        transition={{ duration: 0.5 }}
+        className="w-2/3"
+      >
+        <h3 className="font-extrabold text-2xl font-[Special-Elite] text-galactic-primary">
+          {event.name}
+        </h3>
+        <p className="mt-2 font-bold text-sm tracking-wider text-galactic-secondary font-[Poppins]">
+          {event.description}
+        </p>
+        <div className=" mt-4">
+          <DotExpandButton text="More" onClick={onClose} />
+        </div>
+      </motion.div>
 
-      {/* Message bubble that shows after a delay */}
-      {showMessage && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-0 -right-40 transform -translate-x-1/2 bg-white border border-gray-300 rounded-lg p-4 shadow-lg max-w-sm"
-        >
-          <p className="text-gray-700 text-center">Welcome to the Anime World!</p>
-        </motion.div>
-      )}
+      {/* Character Section (Smaller) */}
+      <motion.img
+        src={imageSrc}
+        alt="Anime Character"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={characterVariants}
+        transition={{ duration: 0.5 }}
+        className="w-1/3 h-auto object-contain"
+      />
     </div>
   );
 };

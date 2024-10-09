@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Image } from "../../components/shared/image";
-import Button from "@/src/components/UI/Button";
+import Button from "@/src/components/UI/OutLineButton";
 import { animeNews } from "../../utils/animeNews";
 
 //Lastest Anime Section

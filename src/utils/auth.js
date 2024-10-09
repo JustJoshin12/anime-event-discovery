@@ -1,22 +1,17 @@
 import { checkResponse } from "./checkresponse";
+import axios from "axios";
 
-const baseUrl = "https://6183-67-165-141-227.ngrok-free.app";
+const baseUrl = "https://0676-67-165-141-227.ngrok-free.app";
 
-
-export const signin = ({ email, password }) => {
-  return fetch(`${baseUrl}/readUserAccount`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    return checkResponse(res);
+export const signin = async ({ email, password }) => {
+  const response = await axios.post(`${baseUrl}/api/login`, {
+    email,
+    password,
   });
+  return response;
 };
 
-
-export const register = ({
+export const register = async ({
   firstName,
   lastName,
   userName,
@@ -26,27 +21,54 @@ export const register = ({
   dob,
   createTime,
   zipcode,
-  state
+  state,
 }) => {
-  return fetch(`${baseUrl}/createUserAccount`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      firstName,
-      lastName,
-      userName,
-      password,
-      email,
-      avatar,
-      dob,
-      createTime,
-      zipcode,
-      state
-    }),
-  }).then((res) => {
-    return checkResponse(res);
+  const response = await axios.post(`${baseUrl}/api/register`, {
+    firstName,
+    lastName,
+    userName,
+    password,
+    email,
+    avatar,
+    dob,
+    createTime,
+    zipcode,
+    state,
   });
+  return response;
 };
+
+// export const register = ({
+//   firstName,
+//   lastName,
+//   userName,
+//   password,
+//   email,
+//   avatar,
+//   dob,
+//   createTime,
+//   zipcode,
+//   state
+// }) => {
+//   return fetch(`${baseUrl}/createUserAccount`, {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       firstName,
+//       lastName,
+//       userName,
+//       password,
+//       email,
+//       avatar,
+//       dob,
+//       createTime,
+//       zipcode,
+//       state
+//     }),
+//   }).then((res) => {
+//     return checkResponse(res);
+//   });
+// };

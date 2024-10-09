@@ -15,17 +15,9 @@ import FilterTabs from "@/src/components/shared/filterTabs";
 import CharacterWithMessage from "@/src/components/UI/AnimeCharacterMessager";
 import Carousel from "@/src/components/shared/carousel";
 import dateFormatter from "@/src/utils/dateFormatter";
-import { Container } from "postcss";
 
-const characterVariants = {
-  hidden: { opacity: 0, x: -100, y: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: { duration: 0.8, staggerChildren: 0.3 },
-  },
-  exit: { opacity: 0, x: 100, y: 100 },
+const CharacterMessageStyles = {
+  
 };
 
 const BREAKPOINTS = {
@@ -39,7 +31,8 @@ const CARD_SIZE = CARD_WIDTH + MARGIN;
 const cardStyles = {
   width: CARD_WIDTH,
   marginRight: MARGIN,
-  container : "text-galactic-secondary relative shrink-0 cursor-pointer transition-transform hover:-translate-y-1 p-4 rounded-md bg-galactic-lightGray/70"
+  container:
+    "text-galactic-secondary relative shrink-0 cursor-pointer transition-transform hover:-translate-y-1 p-4 rounded-md bg-galactic-lightGray/70",
 };
 
 const Header = () => {
@@ -63,10 +56,7 @@ const FeaturedItem = ({ images, date, name, description, style }) => {
   const formattedDate = dateFormatter(date, "format3");
 
   return (
-    <div
-      className={style?.container}
-      style={style}
-    >
+    <div className={style?.container} style={style}>
       <Image
         src={images?.logo}
         className="mb-3 h-[200px] w-full rounded-lg object-cover"
@@ -108,29 +98,44 @@ const FeaturedSection = () => {
 };
 
 const HeroSection = () => {
+  const backgroundImage = "/images/whatsNewbg.png";
+
+  return (
+    <section
+      className="relative bg-cover bg-center m-12 rounded-badge overflow-hidden"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-30"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Heading */}
+        <h1 className="text-4xl my-6 sm:text-5xl lg:text-6xl font-extrabold text-white text-center">
+          What's New in the Anime World
+        </h1>
+        {/* Description */}
+        <p className="my-10 text-xl lg:text-2xl text-gray-200 text-center max-w-3xl mx-auto">
+          Discover the latest anime events happening around the globe. Filter by
+          category to find events that match your interests and explore new
+          experiences.
+        </p>
+        <FeaturedSection />
+      </div>
+    </section>
+  );
+};
+
+const EventMapSection = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredEvents, setFilteredEvents] = useState(popularEventsCardData);
-  const backgroundImage = "/images/whatsNewbg.png";
-  const images = [
-    "/images/slideShowCharacters/deku.png",
-    "/images/slideShowCharacters/giyuu.png",
-    "/images/slideShowCharacters/ichigo.png",
-    "/images/slideShowCharacters/elsword.png",
-  ];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const mapContainerStyle = {
     width: "100%",
     height: "600px",
     borderRadius: "15px",
     overflow: "hidden",
-  };
-
-  // Variants for animation
-  const characterVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 },
   };
 
   // Extract unique categories
@@ -175,64 +180,41 @@ const HeroSection = () => {
     }
   }, [selectedCategory]);
 
-  // Effect to change Anime character
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000); // Switch every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [images.length]);
+  // Function to handle closing the character message
+  const handleCloseMessage = () => {
+    setSelectedEvent(null);
+  };
 
   return (
-    <section
-      className="relative bg-cover bg-center m-12 rounded-badge overflow-hidden"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-30"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Heading */}
-        <h1 className="text-4xl my-6 sm:text-5xl lg:text-6xl font-extrabold text-white text-center">
-          What's New in the Anime World
-        </h1>
-        {/* Description */}
-        <p className="my-10 text-xl lg:text-2xl text-gray-200 text-center max-w-3xl mx-auto">
-          Discover the latest anime events happening around the globe. Filter by
-          category to find events that match your interests and explore new
-          experiences.
-        </p>
-        <FeaturedSection />
+    <div className="mt-12 flex flex-col lg:flex-row items-center justify-around">
+      {/* Map Section */}
+      <div className="relative w-full lg:w-3/5">
         {/* Filter Section */}
-        {/* <div className="mt-8 flex justify-center">
+        <div className="absolute z-30 left-2 top-12">
           <FilterTabs
             categories={categories}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
           />
-        </div> */}
-
-        {/* Map and Character Section */}
-        <div className="mt-12 flex flex-col lg:flex-row items-center">
-          {/* Map Section */}
-          {/* <div className="w-full lg:w-2/3">
-            <MapComponent
-              events={filteredEvents}
-              userLocation={userLocation}
-              mapContainerStyle={mapContainerStyle}
-            />
-          </div> */}
-
-          {/* Anime Character Animation */}
-          {/* <div className="w-full lg:w-2/5 mt-8 lg:mt-0 flex justify-center">
-            <CharacterWithMessage imageSrc="/images/slideShowCharacters/elsword.png" />
-          </div> */}
         </div>
+        <MapComponent
+          events={filteredEvents}
+          userLocation={userLocation}
+          mapContainerStyle={mapContainerStyle}
+          setSelectedEvent={setSelectedEvent}
+        />
       </div>
-    </section>
+
+      {/* Anime Character with Message */}
+      <div className="w-full flex justify-around lg:w-1/3 mt-8 lg:mt-0">
+        <CharacterWithMessage
+          imageSrc="/images/slideShowCharacters/elsword.png"
+          event={selectedEvent}
+          onClose={handleCloseMessage}
+          styles={CharacterMessageStyles}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -247,14 +229,27 @@ const WhatsNewPage = () => {
   ];
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <Header />
       <main>
         <div className="flex flex-row bg-slate-900">
           <VerticalTabs menuItems={menuItems} />
           <div className="h-full w-full">
             <HeroSection />
-            <div></div>
+            <div className="m-20">
+              <h2 className="text-3xl py-4 font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-8 text-galactic-softCyanGreen">
+                Find Events Near You
+              </h2>
+              <div className="p-10 rounded-badge bg-cosmic-4 shadow-2xl">
+                <h3 className="text-5xl tracking-tighter font-bold  my-5 text-galactic-primary drop-shadow-2xl">
+                  Event Map
+                </h3>
+                <p className="text-xl font-semibold tracking-wider font-mono text-galactic-primary py-4">
+                  Discover anime events in your area
+                </p>
+                <EventMapSection />
+              </div>
+            </div>
           </div>
         </div>
       </main>

@@ -9,9 +9,7 @@ import { eventInfoList } from '@/src/utils/eventInfoList';
 export const fetchPopularEvents = createAsyncThunk(
     "events/fetchPopularEvents",
     async () => {
-        console.log("Fetching popular events...");
         const response = await api.popularEventsApi();
-        console.log("Response from API:", response);
         return response;
     }
 );
