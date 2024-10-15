@@ -18,7 +18,7 @@ const EventForm = () => {
         <div className="px-6 lg:px-8 text-galactic-text">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <h2 className="text-3xl font-bold tracking-tight ">
-              Let's work together
+              Let’s work together
             </h2>
             <p className="mt-2 text-lg leading-8">
               Submit Your Anime Event to Reach Thousands of Enthusiasts and
@@ -82,7 +82,7 @@ const EventForm = () => {
                     htmlFor="company"
                     className="block text-sm font-semibold leading-6 "
                   >
-                    Organizer's Name
+                    Organizer’s Name
                   </label>
                   <div className="mt-2.5">
                     <input

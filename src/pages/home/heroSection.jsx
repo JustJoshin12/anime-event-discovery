@@ -223,8 +223,9 @@ const HeroSection = () => {
                 key="3"
               >
                 <h2 className="mt-4 font-bold font-[Special-Elite] text-xl xl:text-5xl leading-8 text-galactic-secondary">
-                  "Discover the Anime World Near You"
+                  &quot;Discover the Anime World Near You&quot;
                 </h2>
+
                 <p className="mt-4 md:px-20 font-semibold text-lg xl:text-xl leading-8 text-gray-300">
                   Discover exciting upcoming anime events near you, read
                   detailed reviews from fellow fans, and stay updated with the

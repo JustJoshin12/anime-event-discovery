@@ -44,16 +44,16 @@ const EventInfoSection = () => {
           </h3>
           <p className="text-white text-base lg:text-lg w-2/3 pt-10 font-[Poppins-Bold] tracking-wider">
             Welcome to the Event Section of Anime Event Discovery! Whether
-            you're gearing up for your next anime convention or just exploring
-            what’s happening in the anime world near you, you’re in the right
-            place. Here, you’ll find a carefully curated list of upcoming
-            events, including conventions, screenings, and local meetups, all
-            designed to bring anime fans together for unforgettable experiences.
-            Navigating is simple: browse by event type, date, or location to
-            find something that matches your interests. We update our listings
-            regularly, so check back often to stay in the loop. Get ready to
-            dive into the excitement of the anime community—your next adventure
-            awaits!
+            you&apos;re gearing up for your next anime convention or just
+            exploring what’s happening in the anime world near you, you’re in
+            the right place. Here, you’ll find a carefully curated list of
+            upcoming events, including conventions, screenings, and local
+            meetups, all designed to bring anime fans together for unforgettable
+            experiences. Navigating is simple: browse by event type, date, or
+            location to find something that matches your interests. We update
+            our listings regularly, so check back often to stay in the loop. Get
+            ready to dive into the excitement of the anime community—your next
+            adventure awaits!
           </p>
         </div>
       </div>

@@ -111,7 +111,7 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Heading */}
         <h1 className="text-4xl my-6 sm:text-5xl lg:text-6xl font-extrabold text-white text-center">
-          What's New in the Anime World
+          What’s New in the Anime World
         </h1>
         {/* Description */}
         <p className="my-10 text-xl lg:text-2xl text-gray-200 text-center max-w-3xl mx-auto">
