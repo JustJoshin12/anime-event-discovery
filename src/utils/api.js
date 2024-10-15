@@ -1,8 +1,8 @@
 import axios from "axios";
 import api from "./customAxios";
 
-const eventsUrl = "https://d23e-67-165-141-227.ngrok-free.app";
-const newsUrl = "https://15cc-67-165-141-227.ngrok-free.app";
+const eventsUrl = "https://f9ae-67-165-141-227.ngrok-free.app";
+const newsUrl = "https://f9ae-67-165-141-227.ngrok-free.app";
 
 // Axios instances for APIs
 // const eventsUrlApi = axios.create({

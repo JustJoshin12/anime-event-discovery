@@ -126,7 +126,100 @@ export const popularEventsData = [
         "likes": 12000,
         "rating": 92,
         "attendees": 50000
-    }
+    },
+    {
+        "_id": "60d21c0167d0d8992e610cab",
+        "name": "AnimeJapan",
+        "date": "2024-03-23T00:00:00.000Z",
+        "location": {
+            "street": "3-11-1 Ariake",
+            "city": "Koto City",
+            "state": "Tokyo",
+            "country": "Japan",
+            "zip": "135-0063",
+            "coordinates": {
+                "latitude": 35.6329,
+                "longitude": 139.7976
+            }
+        },
+        "description": "One of the largest anime conventions in Japan, featuring exhibitions from top anime studios, stage events, and exclusive merchandise.",
+        "website_url": "https://www.anime-japan.jp/",
+        "images": {
+            "logo": "/images/animeNewsImages/demonSlayer.avif",
+            "card": "/images/animeNewsImages/demonSlayer.avif",
+            "news": "https://loremflickr.com/640/480?lock=1415161718"
+        },
+        "categories": [
+            "Convention",
+            "Exhibition",
+            "Merchandise"
+        ],
+        "likes": 500,
+        "rating": 5.0,
+        "attendees": 150000
+    },
+    {
+        "_id": "60d21c0667d0d8992e610cac",
+        "name": "Japan Expo",
+        "date": "2024-07-04T00:00:00.000Z",
+        "location": {
+            "street": "Parc des Expositions de Paris-Nord Villepinte",
+            "city": "Villepinte",
+            "state": "Île-de-France",
+            "country": "France",
+            "zip": "93420",
+            "coordinates": {
+                "latitude": 48.9691,
+                "longitude": 2.5156
+            }
+        },
+        "description": "Europe's biggest convention on Japanese popular culture, including manga, anime, martial arts, and video games.",
+        "website_url": "https://www.japan-expo-paris.com/",
+        "images": {
+            "logo": "/images/animeNewsImages/jujustuKaisen.jpg",
+            "card": "/images/animeNewsImages/jujustuKaisen.jpg",
+            "news": "https://loremflickr.com/640/480?lock=1516171819"
+        },
+        "categories": [
+            "Convention",
+            "Cultural",
+            "Gaming"
+        ],
+        "likes": 450,
+        "rating": 4.9,
+        "attendees": 250000
+    },
+    {
+        "_id": "60d21c0b67d0d8992e610cad",
+        "name": "AnimagiC",
+        "date": "2024-08-02T00:00:00.000Z",
+        "location": {
+            "street": "Rheinstetten",
+            "city": "Mannheim",
+            "state": "Baden-Württemberg",
+            "country": "Germany",
+            "zip": "68163",
+            "coordinates": {
+                "latitude": 49.4833,
+                "longitude": 8.4660
+            }
+        },
+        "description": "One of the largest anime conventions in Germany, featuring concerts, cosplay competitions, and guest panels.",
+        "website_url": "https://animagic.de/",
+        "images": {
+            "logo": "/images/animeNewsImages/spyFamily.png",
+            "card": "/images/animeNewsImages/spyFamily.png",
+            "news": "https://loremflickr.com/640/480?lock=1617181920"
+        },
+        "categories": [
+            "Convention",
+            "Cosplay",
+            "Music"
+        ],
+        "likes": 320,
+        "rating": 4.8,
+        "attendees": 20000
+    },
 ];
 
 export const featuredEventsData = [

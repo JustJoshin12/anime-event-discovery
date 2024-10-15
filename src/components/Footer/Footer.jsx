@@ -9,15 +9,15 @@ const SimpleFloatingNav = () => {
       <Logo />
       <div className="flex flex-col  sm:flex-row items-center w-full sm:w-auto gap-4 sm:gap-6">
         <div className="flex flex-row gap-4 sm:gap-6">
-          <NavLink>Home</NavLink>
-          <NavLink>Events</NavLink>
+          <NavLink link="/home">Home</NavLink>
+          <NavLink link="/events">Events</NavLink>
         </div>
         <div className="flex flex-row gap-4 sm:gap-6">
-          <NavLink>News</NavLink>
-          <NavLink>Settings</NavLink>
+          <NavLink link="news">News</NavLink>
+          <NavLink link="settings">Settings</NavLink>
         </div>
       </div>
-      <JoinButton />
+      <ProfileButton />
     </nav>
   );
 };
@@ -43,9 +43,9 @@ const Logo = () => {
   );
 };
 
-const NavLink = ({ children,  }) => {
+const NavLink = ({ children, link }) => {
   return (
-    <a href="#" rel="nofollow" className="block overflow-hidden">
+    <a href={link} rel="nofollow" className="block overflow-hidden">
       <motion.div
         whileHover={{ y: -20 }}
         transition={{ ease: "backInOut", duration: 0.5 }}
@@ -60,7 +60,7 @@ const NavLink = ({ children,  }) => {
   );
 };
 
-const JoinButton = () => {
+const ProfileButton = () => {
   return (
     <button
       className={`

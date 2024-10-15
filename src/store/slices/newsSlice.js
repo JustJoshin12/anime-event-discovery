@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { animeNews } from "@/src/utils/animeNews";
 import * as api from "../../utils/api";
 
 // Async thunk for fetching
@@ -28,7 +29,7 @@ const setRejected = (state, action) => {
 const newsSlice = createSlice({
   name: "news",
   initialState: {
-    items: [],
+    lastestNewsItems: animeNews,
     status: "idle",
     error: null,
   },

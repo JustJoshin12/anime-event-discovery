@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import { Image } from "../../components/shared/image";
 import Button from "@/src/components/UI/OutLineButton";
 import { animeNews } from "../../utils/animeNews";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLastestNews } from "@/src/store/slices/newsSlice";
+import { FailedApiComponent } from "@/src/components/UI/FailedComponent";
+import { useEffect } from "react";
+import SkeletonCard from "@/src/components/shared/skeletonCard";
 
 //Lastest Anime Section
 
@@ -39,6 +44,46 @@ const ShimmerBorderCard = ({ news }) => {
 };
 
 const LatestAnimeNewsSection = () => {
+  const dispatch = useDispatch();
+
+  const lastestNewsState = useSelector((state) => state.news);
+  // const lastestNewsState = {
+  //   status: "loading",
+  //   lastestNewsData: [],
+  //   error: null,
+  // };
+
+  useEffect(() => {
+    dispatch(fetchLastestNews());
+  }, [dispatch]);
+
+  const { status, lastestNewsItems, error } = lastestNewsState;
+
+
+  if (status === "loading") {
+    return (
+      <div className="my-32">
+        <h3 className="text-galactic-complementaryOrange text-5xl xl:text-8xl text-center py-14 border-t-2 xl:mx-44">
+          Lastest News
+        </h3>
+        <ul className="grid grid-cols-1 gap-6 p-4 xl:p-16 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <SkeletonCard key={index} width="" />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  if (status === "failed") return (
+    <div className="my-32">
+      <h3 className="text-galactic-complementaryOrange text-5xl xl:text-8xl text-center py-14 border-t-2 xl:mx-44">
+        Lastest News
+      </h3>
+      <FailedApiComponent/>
+    </div>
+  );;
+
   return (
     <div className="my-32">
       <h3 className="text-galactic-complementaryOrange text-5xl xl:text-8xl text-center py-14 border-t-2 xl:mx-44">
@@ -46,7 +91,7 @@ const LatestAnimeNewsSection = () => {
       </h3>
       <div>
         <ul className="grid grid-cols-1 gap-6 p-4 xl:p-16 sm:grid-cols-2 lg:grid-cols-4">
-          {animeNews.map((news, index) => {
+          {lastestNewsItems.map((news, index) => {
             return <ShimmerBorderCard news={news} key={news.id} />;
           })}
         </ul>

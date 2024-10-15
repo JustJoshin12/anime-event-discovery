@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 
 const logo = "/images/websiteLogo.png";
 
+const paintBrushStroke = "/images/brushStroke.png";
+
 ///NavBar Component///
 
 export default function NavBar() {
@@ -18,7 +20,7 @@ export default function NavBar() {
     setIsOpen((prevState) => !prevState);
   };
   return (
-    <Disclosure as="nav" className="shadow-2xl bg-galactic-background/65 py-2">
+    <Disclosure as="nav" className="shadow-2xl bg-galactic-background/65 py-2 z-20">
       <div className="mx-auto max-w-[1500px] px-1 sm:px-2 xl:px-8">
         <div className="flex h-24 justify-between">
           <div className="flex">
@@ -31,36 +33,31 @@ export default function NavBar() {
                 className="h-24 w-24"
               />
             </div>
-            <div className="hidden text-base lg:text-lg lg:ml-6 sm:flex lg:space-x-5 xl:space-x-16  text-galactic-accent">
-              <Link
-                href="/home"
-                className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
-              >
-                Home
-              </Link>
-              <Link
-                href="/events"
-                className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
-              >
-                Events
-              </Link>
-              <Link
-                href="/news"
-                className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
-              >
-                News
-              </Link>
-              <Link
-                href="/profile"
-                className="inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200 hover:border-galactic-secondary hover:text-black hover:bg-galactic-primary/60"
-              >
-                Profile
-              </Link>
+            <div className="hidden text-base lg:text-lg lg:ml-6 sm:flex lg:space-x-5 xl:space-x-16 text-galactic-accent">
+              {/* Updated Link Components */}
+              {["Home", "Events", "News", "Profile"].map((item) => (
+                <Link
+                  key={item}
+                  href={`/${item.toLowerCase()}`}
+                  className="relative group inline-flex items-center border-b-2 border-transparent px-4 pt-1 font-medium duration-200  hover:text-white"
+                >
+                  <span className="relative px-2 z-10">{item}</span>
+                  <div className="absolute flex items-center inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Image
+                      src={paintBrushStroke}
+                      alt=""
+                      className="w-full h-16 "
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-          {/*Search Bar*/}
+          {/* Search Bar */}
           <SearchBar classes="hidden md:flex items-center" />
-          {/*userIcon conponent */}
+          {/* User Icon Component */}
           <UserProfileMenu />
 
           <div className="mr-2 flex items-center sm:hidden">
@@ -262,28 +259,28 @@ const MobileNavBar = ({ isOpen }) => {
             <div className="space-y-1 pb-3 pt-2 font-bold">
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/home"
                 className="block duration-100 hover:border-l-4 hover:border-galactic-secondary hover:bg-gray-50 py-2 pl-3 pr-4 text-base hover:text-gray-700"
               >
                 Home
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/events"
                 className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
               >
                 Events
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/news"
                 className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
               >
                 News
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/profile"
                 className="block duration-100 hover:border-l-4 border-transparent py-2 pl-3 pr-4 text-base hover:border-galactic-secondary hover:bg-gray-50 hover:text-gray-700"
               >
                 Profile
