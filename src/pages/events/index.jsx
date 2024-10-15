@@ -1,5 +1,5 @@
-import Footer from "../../components/footer/Footer";
-import NavBar from "../../components/navBar/NavBar";
+import Footer from "@/src/components/footer/Footer";
+import NavBar from "@/src/components/navBar/NavBar";
 import Link from "next/link";
 import VerticalTabs from "../../components/shared/sidebarNav";
 import { motion } from "framer-motion";

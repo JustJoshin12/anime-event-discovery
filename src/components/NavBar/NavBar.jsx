@@ -14,7 +14,7 @@ const paintBrushStroke = "/images/brushStroke.png";
 
 ///NavBar Component///
 
-export default function NavBar() {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -338,3 +338,6 @@ const MobileNavBar = ({ isOpen }) => {
     </Disclosure.Panel>
   );
 };
+
+
+export default NavBar;

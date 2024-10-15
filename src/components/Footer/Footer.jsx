@@ -156,7 +156,7 @@ const navigation = {
   ],
 };
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer
       className="bg-cover bg-no-repeat"
@@ -188,3 +188,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;
