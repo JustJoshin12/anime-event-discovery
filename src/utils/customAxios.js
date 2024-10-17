@@ -4,7 +4,7 @@ import {} from "@/store/index";
 import { logout, getToken } from "@/store/slices/userSlice";
 
 const api = axios.create({
-  baseURL: "https://0676-67-165-141-227.ngrok-free.app",
+  baseURL: "https://efe9-67-165-141-227.ngrok-free.app",
 });
 
 api.interceptors.request.use(
