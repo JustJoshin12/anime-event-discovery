@@ -1,19 +1,18 @@
 // src/utils/api.js
-import axios from 'axios';
-import store from '../../src/store';
-import { logout, getToken } from '../store/slices/userSlice'; 
+import axios from "axios";
+import {} from "@/store/index";
+import { logout, getToken } from "@/store/slices/userSlice";
 
 const api = axios.create({
-  baseURL: 'https://f9ae-67-165-141-227.ngrok-free.app',
+  baseURL: "https://0676-67-165-141-227.ngrok-free.app",
 });
-
 
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("jwt");
     console.log(token);
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },
@@ -28,7 +27,7 @@ api.interceptors.response.use(
       // Dispatch logout action or handle token refresh logic
       store.dispatch(logout());
       // redirect to login page
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }

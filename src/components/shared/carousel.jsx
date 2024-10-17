@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Children, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import useMeasure from "react-use-measure";
-import { Image } from "@/src/components/shared/image";
+import { Image } from "@/components/shared/image";
 
 const CARD_WIDTH = 350;
 const MARGIN = 20;

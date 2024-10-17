@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { animeNews } from "@/src/utils/animeNews";
-import * as api from "../../utils/api";
+import { animeNews } from "@/utils/animeNews";
+import { latestNewsApi } from "@/utils/api"
 
 // Async thunk for fetching
 export const fetchLastestNews = createAsyncThunk("news/fetch", async () => {
-  const response = await api.lastesNewsApi();
+  const response = await latestNewsApi();
   return response;
 });
 

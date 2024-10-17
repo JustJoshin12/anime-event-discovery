@@ -1,20 +1,20 @@
 "use-client";
 
-import Footer from "@/src/components/footer/Footer";
+import Footer from "@/components/footer/Footer";
 import { useState, useEffect } from "react";
-import NavBar from "@/src/components/navBar/NavBar";
-import VerticalTabs from "@/src/components/shared/sidebarNav";
-import MapComponent from "@/src/components/UI/MapComponent";
+import NavBar from "@/components/navBar/NavBar";
+import VerticalTabs from "@/components/shared/sidebarNav";
+import MapComponent from "@/components/UI/MapComponent";
 import {
   popularEventsCardData,
   featuredEventsData,
-} from "@/src/utils/popularEventsData";
-import { Image } from "@/src/components/shared/image";
+} from "@/utils/popularEventsData";
+import { Image } from "@/components/shared/image";
 import { motion } from "framer-motion";
-import FilterTabs from "@/src/components/shared/filterTabs";
-import CharacterWithMessage from "@/src/components/UI/AnimeCharacterMessager";
-import Carousel from "@/src/components/shared/carousel";
-import dateFormatter from "@/src/utils/dateFormatter";
+import FilterTabs from "@/components/shared/filterTabs";
+import CharacterWithMessage from "@/components/UI/AnimeCharacterMessager";
+import Carousel from "@/components/shared/carousel";
+import dateFormatter from "@/utils/dateFormatter";
 
 const CharacterMessageStyles = {
   

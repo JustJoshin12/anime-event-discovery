@@ -1,21 +1,21 @@
 "use client";
-import NavBar from "@/src/components/navBar/NavBar";
-import { Image } from "@/src/components/shared/image";
+import NavBar from "@/components/navBar/NavBar";
+import { Image } from "@/components/shared/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
-import { eventInfoList } from "@/src/utils/eventInfoList";
+import { eventInfoList } from "@/utils/eventInfoList";
 import { Card } from "../../components/UI/EventCard";
 import Button from "../../components/UI/OutLineButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchUpcomingEvents } from "@/src/store/slices/eventSlice";
+import { fetchUpcomingEvents } from "@/store/slices/eventSlice";
 import { LoadingComponentAnimation } from "../../components/UI/LoadingComponent";
 import { FailedApiComponent } from "../../components/UI/FailedComponent";
-import SkeletonCard from "@/src/components/shared/skeletonCard";
+import SkeletonCard from "@/components/shared/skeletonCard";
 
 const HeroImage = "/images/heroImage2.jpg";
 const AnimeCollageImage = "/images/animeCharacter2.png";

@@ -1,14 +1,14 @@
-import Footer from "@/src/components/footer/Footer";
-import NavBar from "@/src/components/navBar/NavBar";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/navBar/NavBar";
 import Link from "next/link";
 import VerticalTabs from "../../components/shared/sidebarNav";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Image } from "@/src/components/shared/image";
-import eventTipList from "@/src/utils/eventTipList";
-import SpringModal from "@/src/components/shared/springModal";
+import { Image } from "@/components/shared/image";
+import eventTipList from "@/utils/eventTipList";
+import SpringModal from "@/components/shared/springModal";
 import { useMediaQuery } from "react-responsive";
-import HorizontalBar from "@/src/components/shared/horizontalBar";
+import HorizontalBar from "@/components/shared/horizontalBar";
 
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";

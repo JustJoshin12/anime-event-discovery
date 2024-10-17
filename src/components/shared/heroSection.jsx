@@ -1,7 +1,7 @@
 // components/HeroSection.jsx
 // components/HeroSection.jsx
 import { motion } from 'framer-motion';
-import {UpcomingEvents} from '@/src/pages/home/heroSection';
+import {UpcomingEvents} from '@/pages/home/heroSection';
 
 const HeroSectionTwo = () => {
   return (

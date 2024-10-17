@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRef, useState, useEffect } from "react";
 import { fetchPopularEvents } from "../../store/slices/eventSlice";
 import { useMediaQuery } from "react-responsive";
-import { Features } from "@/src/components/UI/DisappearingScrollFeature";
-import Skeleton from "@/src/components/shared/skeleton";
-import SkeletonCard from "@/src/components/shared/skeletonCard";
+import { Features } from "@/components/UI/DisappearingScrollFeature";
+import Skeleton from "@/components/shared/skeleton";
+import SkeletonCard from "@/components/shared/skeletonCard";
 
 //Popular Events tablet and up
 
-export const PopularEventsSection = () => {
+const PopularEventsSection = () => {
   const dispatch = useDispatch();
 
   const popularEventsState = useSelector((state) => state.event);
@@ -38,8 +38,9 @@ export const PopularEventsSection = () => {
         </div>
       </div>
     );
-  }
-  if (status === "failed") return <FailedApiComponent error={error} />;
+  } else if (status === "failed") {
+    return <FailedApiComponent error={error} />;
+  } 
 
   if (!popularItems || popularItems.length === 0) {
     return <div>No popular events found.</div>;
@@ -51,3 +52,5 @@ export const PopularEventsSection = () => {
     </div>
   );
 };
+
+export default PopularEventsSection;

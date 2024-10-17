@@ -1,14 +1,13 @@
 import MissionSection from "./missionSection";
 import HeroSection from "./heroSection";
 import LatestAnimeNewsSection from "./lastestAnimeSection";
-import Footer from "@/src/components/footer/Footer";
-import { PopularEventsSection } from "./popularEventsSection";
+import Footer from "@/components/footer/Footer";
+import  PopularEventsSection from "./popularEventsSection";
 import { useMediaQuery } from "react-responsive";
-import HeroSectionTwo from "@/src/components/shared/heroSection";
-import NavBar from "@/src/components/navBar/NavBar";
-import withAuth from "@/src/hooks/withAuth";
-import { Features } from "@/src/components/UI/DisappearingScrollFeature";
-import { popularEventsData } from "@/src/utils/popularEventsData";
+import HeroSectionTwo from "@/components/shared/heroSection";
+import withAuth from "@/hooks/withAuth";
+import { Features } from "@/components/UI/DisappearingScrollFeature";
+import { popularEventsData } from "@/utils/popularEventsData";
 
 //Home Component
 

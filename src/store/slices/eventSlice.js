@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from "../../utils/api";
-import { popularEventsCardData,popularEventsData } from '@/src/utils/popularEventsData';
-import { eventInfoList } from '@/src/utils/eventInfoList';
+import * as api from "@/utils/api";
+import { popularEventsCardData,popularEventsData } from '@/utils/popularEventsData';
+import { eventInfoList } from '@/utils/eventInfoList';
 
 
 

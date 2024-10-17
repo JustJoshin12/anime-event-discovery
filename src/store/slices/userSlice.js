@@ -1,7 +1,6 @@
 // store/authSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { signin, register } from "../../utils/auth";
-import { store } from "../../store";
+import { signin, register } from "@/utils/auth";
 
 // Thunks for async actions
 export const signIn = createAsyncThunk(

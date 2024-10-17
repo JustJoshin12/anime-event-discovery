@@ -1,18 +1,18 @@
 "use-client";
 
-import Footer from "../../components/footer/Footer";
-import NavBar from "../../components/navBar/NavBar";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/navBar/NavBar";
 import VerticalTabs from "../../components/shared/sidebarNav";
-import { Image } from "@/src/components/shared/image";
+import { Image } from "@/components/shared/image";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   popularEventsData,
   popularEventsCardData,
-} from "@/src/utils/popularEventsData";
+} from "@/utils/popularEventsData";
 import { FaHeart, FaMapMarkerAlt, FaCalendarAlt, FaStar } from "react-icons/fa";
-import Modal from "@/src/components/shared/eventCardModal";
-import formatDate from "@/src/utils/dateFormatter";
+import Modal from "@/components/shared/eventCardModal";
+import formatDate from "@/utils/dateFormatter";
 
 const getRandomHeight = () => {
   const heights = [280, 320, 350, 380, 420]; // Adjusted possible heights to avoid too small cards

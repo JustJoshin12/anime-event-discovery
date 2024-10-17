@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Image } from "../../components/shared/image";
-import Button from "@/src/components/UI/OutLineButton";
+import Button from "@/components/UI/OutLineButton";
 import { animeNews } from "../../utils/animeNews";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLastestNews } from "@/src/store/slices/newsSlice";
-import { FailedApiComponent } from "@/src/components/UI/FailedComponent";
+import { fetchLastestNews } from "@/store/slices/newsSlice";
+import { FailedApiComponent } from "@/components/UI/FailedComponent";
 import { useEffect } from "react";
-import SkeletonCard from "@/src/components/shared/skeletonCard";
+import SkeletonCard from "@/components/shared/skeletonCard";
 
 //Lastest Anime Section
 
@@ -72,17 +72,15 @@ const LatestAnimeNewsSection = () => {
           ))}
         </ul>
       </div>
-    );
-  }
-
-  if (status === "failed") return (
-    <div className="my-32">
-      <h3 className="text-galactic-complementaryOrange text-5xl xl:text-8xl text-center py-14 border-t-2 xl:mx-44">
-        Lastest News
-      </h3>
-      <FailedApiComponent/>
-    </div>
-  );;
+    ); }
+  // } else if (status === "failed") return (
+  //   <div className="my-32">
+  //     <h3 className="text-galactic-complementaryOrange text-5xl xl:text-8xl text-center py-14 border-t-2 xl:mx-44">
+  //       Lastest News
+  //     </h3>
+  //     <FailedApiComponent/>
+  //   </div>
+  // );
 
   return (
     <div className="my-32">

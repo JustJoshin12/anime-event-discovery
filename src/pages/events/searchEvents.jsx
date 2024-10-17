@@ -1,15 +1,15 @@
-import Footer from "../../components/footer/Footer";
-import NavBar from "../../components/navBar/NavBar";
-import VerticalTabs from "@/src/components/shared/sidebarNav";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/navBar/NavBar";
+import VerticalTabs from "@/components/shared/sidebarNav";
 import { useMediaQuery } from "react-responsive";
-import HorizontalBar from "@/src/components/shared/horizontalBar";
-import BeamInput from "@/src/components/UI/BeamInput";
-import { VanishText } from "@/src/components/UI/VanishingText";
-import SearchEventCard from "@/src/components/UI/SearchEventCard";
+import HorizontalBar from "@/components/shared/horizontalBar";
+import BeamInput from "@/components/UI/BeamInput";
+import { VanishText } from "@/components/UI/VanishingText";
+import SearchEventCard from "@/components/UI/SearchEventCard";
 import {
   popularEventsData,
   popularEventsCardData,
-} from "@/src/utils/popularEventsData";
+} from "@/utils/popularEventsData";
 
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";

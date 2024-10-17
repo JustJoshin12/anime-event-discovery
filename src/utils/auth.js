@@ -1,4 +1,3 @@
-import { checkResponse } from "./checkresponse";
 import axios from "axios";
 
 const baseUrl = "https://f9ae-67-165-141-227.ngrok-free.app";

@@ -2,13 +2,12 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import { Image } from "@/src/components/shared/image";
+import { Image } from "@/components/shared/image";
 import { useDispatch, useSelector } from "react-redux";
-import { signIn } from "@/src/store/slices/userSlice";
-import BackgroundChanger from "@/src/components/UI/BackgroundChanger";
-import websiteLogo from "@/public/images/websiteLogo.png";
-import { useFormAndValidation } from "@/src/hooks/useFormAndValidation";
-import DialogPopUp from "@/src/components/UI/DialogPopUp";
+import { signIn } from "@/store/slices/userSlice";
+import BackgroundChanger from "@/components/UI/BackgroundChanger";
+import { useFormAndValidation } from "@/hooks/useFormAndValidation";
+import DialogPopUp from "@/components/UI/DialogPopUp";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -48,6 +47,8 @@ function LoginPage() {
     handleLogin({ email: values.email, password: values.password });
   };
 
+  const websiteLogo = "/images/websiteLogo.png"
+
   return (
     <>
       <BackgroundChanger>
@@ -66,7 +67,7 @@ function LoginPage() {
               width={150}
               height={32}
               className="mx-auto w-auto h-40 md:h-44 xl:h-auto"
-              src={websiteLogo.src}
+              src={websiteLogo}
               alt="Your Company"
             />
             <h2 className="mt-4 md:mt-10 text-center text-lg lg:text-2xl font-bold leading-9 tracking-tight text-white">
