@@ -1,5 +1,5 @@
 "use client";
-import NavBar from "@/components/navBar/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
 import { Image } from "@/components/shared/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";

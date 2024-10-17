@@ -1,5 +1,5 @@
-import Footer from "@/components/footer/Footer";
-import NavBar from "@/components/navBar/NavBar";
+import Footer from "@/components/Footer/Footer";
+import NavBar from "@/components/NavBar/NavBar";
 import VerticalTabs from "@/components/shared/sidebarNav";
 import { useMediaQuery } from "react-responsive";
 import HorizontalBar from "@/components/shared/horizontalBar";

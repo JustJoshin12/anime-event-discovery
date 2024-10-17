@@ -1,7 +1,7 @@
 import MissionSection from "./missionSection";
 import HeroSection from "./heroSection";
 import LatestAnimeNewsSection from "./lastestAnimeSection";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/Footer/Footer";
 import  PopularEventsSection from "./popularEventsSection";
 import { useMediaQuery } from "react-responsive";
 import HeroSectionTwo from "@/components/shared/heroSection";

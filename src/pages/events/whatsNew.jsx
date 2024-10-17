@@ -1,8 +1,8 @@
 "use-client";
 
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/Footer/Footer";
 import { useState, useEffect } from "react";
-import NavBar from "@/components/navBar/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
 import VerticalTabs from "@/components/shared/sidebarNav";
 import MapComponent from "@/components/UI/MapComponent";
 import {
