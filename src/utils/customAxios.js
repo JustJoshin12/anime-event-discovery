@@ -25,9 +25,9 @@ api.interceptors.response.use(
     // Check for 401 Unauthorized response
     if (error.response && error.response.status === 401) {
       // Dispatch logout action or handle token refresh logic
-      store.dispatch(logout());
+      // store.dispatch(logout());
       // redirect to login page
-      window.location.href = "/login";
+      // window.location.href = "/login";
     }
     return Promise.reject(error);
   }
