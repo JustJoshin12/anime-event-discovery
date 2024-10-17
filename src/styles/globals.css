@@ -3,18 +3,12 @@
 @tailwind utilities;
 
 
-@font-face {
-    font-family: "Special Elite";
-    src: url("/fonts/SpecialElite-Regular.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: "Poppins Bold";
-    src: url("/fonts/Poppins-Bold.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: "Poppins Bold Italic";
-    src: url("/fonts/Poppins-BoldItalic.ttf") format("truetype");
-  }
-  
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}

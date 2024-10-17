@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingImage = "/images/loading.jpg";
 
-const LoadingScreen = () => {
+export const LoadingScreen = () => {
     return (
       <AnimatePresence>
       <motion.div
@@ -63,4 +63,3 @@ const LoadingScreen = () => {
     );
   };
   
-  export default LoadingScreen;

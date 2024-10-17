@@ -2,9 +2,20 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-const DialogPopUp = ({ open, setOpen, onClick, title, description, buttonText, isError }) => {
+const DialogPopUp = ({ open = false, setOpen, onClick, title, description, buttonText, isError }) => {
+  
+  const getIcon = () => {
+    return isError ? (
+      <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+    ) : (
+      <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+    );
+  };
+
+  const handleOnClick = onClick || (() => setOpen(false));
+
   return (
-    <Transition.Root show={open || false} as={Fragment}>
+    <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={() => setOpen(false)}>
         <Transition.Child
           as={Fragment}
@@ -22,7 +33,6 @@ const DialogPopUp = ({ open, setOpen, onClick, title, description, buttonText, i
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
-              show={open}
               enter="ease-out duration-300"
               enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               enterTo="opacity-100 translate-y-0 sm:scale-100"
@@ -33,11 +43,7 @@ const DialogPopUp = ({ open, setOpen, onClick, title, description, buttonText, i
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                    {isError ? (
-                      <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
-                    ) : (
-                      <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
-                    )}
+                    {getIcon()}
                   </div>
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
@@ -52,7 +58,7 @@ const DialogPopUp = ({ open, setOpen, onClick, title, description, buttonText, i
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={onClick ? onClick : () => setOpen(false)}
+                    onClick={handleOnClick}
                   >
                     {buttonText}
                   </button>

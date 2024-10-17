@@ -3,19 +3,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const VanishText = () => {
+export const VanishText = ({phraseWords, sentence}) => {
   return (
-    <div className=" px-4 py-24 text-center md:py-36">
+    <div className=" px-4 text-center">
       <h3 className="text-3xl font-medium text-fuchsia-700 sm:text-4xl md:text-5xl lg:text-6xl">
-      Thank you for Registering!!!
+      {sentence}
         <AnimatedText
-          phrases={[
-            "To be continued",
-            "Stay Tuned",
-            "To be continued",
-            "Stay Tuned",
-
-          ]}
+          phrases={phraseWords}
         />
       </h3>
     </div>

@@ -78,6 +78,20 @@ const avatarIconList = [
     width: 100,
     height: 100,
   },
+  {
+    id: 12,
+    name: "giyu",
+    imageUrl: `/images/avatarIcons/giyu.gif`,
+    width: 100,
+    height: 100,
+  },
+  {
+    id: 13,
+    name: "tengen",
+    imageUrl: `/images/avatarIcons/tengen.gif`,
+    width: 100,
+    height: 100,
+  },
 ];
 
 export default avatarIconList;
