@@ -61,6 +61,8 @@ const EventInfoSection = () => {
   );
 };
 
+// Event Guide Section
+
 const EventGuideSection = ({ children }) => {
   return (
     <div className="p-16 pt-24">
