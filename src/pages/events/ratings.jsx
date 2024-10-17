@@ -1,5 +1,5 @@
-import Footer from "../../components/footer/Footer";
-import NavBar from "../../components/navBar/NavBar";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/navBar/NavBar";
 import VerticalTabs from "../../components/shared/sidebarNav";
 
 const Header = () => {
