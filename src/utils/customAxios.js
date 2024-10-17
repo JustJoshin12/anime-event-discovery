@@ -1,6 +1,6 @@
 // src/utils/api.js
 import axios from "axios";
-import {} from "@/store/index";
+import {store} from "@/store/index";
 import { logout, getToken } from "@/store/slices/userSlice";
 
 const api = axios.create({
