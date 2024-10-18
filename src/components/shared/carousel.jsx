@@ -46,7 +46,7 @@ const Carousel = ({posts,children,breakpoints,cardSize,title, styles}) => {
 
   return (
     <section className={`${styles?.section} py-8`} ref={ref}>
-      <div className="relative overflow-hidden p-4">
+      <div className="relative overflow-hidden p-1 md:p-4">
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center justify-between">
             <h2 className={styles.title}>{title}</h2>

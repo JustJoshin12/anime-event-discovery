@@ -15,6 +15,9 @@ import FilterTabs from "@/components/shared/filterTabs";
 import CharacterWithMessage from "@/components/UI/AnimeCharacterMessager";
 import Carousel from "@/components/shared/carousel";
 import dateFormatter from "@/utils/dateFormatter";
+import { useMediaQuery } from "react-responsive";
+import MobileBar from "@/components/shared/mobileBar";
+import HorizontalBar from "@/components/shared/horizontalBar";
 
 const CharacterMessageStyles = {
   
@@ -25,28 +28,26 @@ const BREAKPOINTS = {
   lg: 1024,
 };
 
-const CARD_WIDTH = 350;
-const MARGIN = 20;
-const CARD_SIZE = CARD_WIDTH + MARGIN;
-const cardStyles = {
-  width: CARD_WIDTH,
-  marginRight: MARGIN,
-  container:
-    "text-galactic-secondary relative shrink-0 cursor-pointer transition-transform hover:-translate-y-1 p-4 rounded-md bg-galactic-lightGray/70",
-};
 
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";
   return (
-    <div
-      className="bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div>
-        <NavBar />
-        <h2 className="pl-12 lg:text-9xl text-galactic-secondary lg:py-28 font-[Poppins-bold] bg-black/40">
-          Events
-        </h2>
+    <div className="relative">
+      <div
+        className="bg-cover bg-no-repeat h-[30vh] md:h-[40vh] "
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        {/* NavBar with Dropdown */}
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <NavBar />
+        </div>
+
+        {/* Header Text */}
+        <div className="flex justify-center items-end pb-8 h-full bg-black/40">
+          <h1 className="text-center text-6xl lg:text-9xl text-galactic-secondary font-[Poppins-bold]">
+            Events
+          </h1>
+        </div>
       </div>
     </div>
   );
@@ -72,9 +73,23 @@ const FeaturedItem = ({ images, date, name, description, style }) => {
 };
 
 const FeaturedSection = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
+
+  // Dynamically calculate card width based on screen size
+  const CARD_WIDTH = isMobile ? 295 : 350;
+  const MARGIN = 20;
+  const CARD_SIZE = CARD_WIDTH + MARGIN;
+
+  // Define card styles with dynamic width
+  const cardStyles = {
+    width: CARD_WIDTH,
+    marginRight: MARGIN,
+    container:
+      "text-galactic-secondary relative shrink-0 cursor-pointer transition-transform hover:-translate-y-1 p-4 rounded-md bg-galactic-lightGray/70",
+  };
   const carouselStyles = {
-    section: "bg-cosmic-4 rounded-badge drop-shadow-lg p-8",
-    title: "mb-8 text-4xl text-galactic-primary",
+    section: "bg-cosmic-4 rounded-badge drop-shadow-lg  md:p-8",
+    title: "mb-8 text-2xl md:text-4xl font-[Poppins-bold] text-galactic-primary",
   };
 
   return (
@@ -102,13 +117,13 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative bg-cover bg-center m-12 rounded-badge overflow-hidden"
+      className="relative bg-cover bg-center md:m-12 rounded-badge overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-30"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto  sm:px-6 lg:px-8 py-16">
         {/* Heading */}
         <h1 className="text-4xl my-6 sm:text-5xl lg:text-6xl font-extrabold text-white text-center">
           What’s New in the Anime World
@@ -219,6 +234,11 @@ const EventMapSection = () => {
 };
 
 const WhatsNewPage = () => {
+
+  const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+
   const menuItems = [
     { name: "Events", href: "/events" },
     { name: "Search Events", href: "/events/searchEvents" },
@@ -228,15 +248,31 @@ const WhatsNewPage = () => {
     { name: "Whats New ", href: "/events/whatsNew" },
   ];
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    // Prevent rendering on the server-side, avoiding hydration mismatch
+    return null;
+  }
+
+
   return (
     <div className="flex flex-col">
       <Header />
       <main>
-        <div className="flex flex-row bg-slate-900">
-          <VerticalTabs menuItems={menuItems} />
+        <div className="flex flex-col lg:flex-row bg-slate-900">
+        {isMobile ? (
+            <MobileBar menuItems={menuItems} />
+          ) : isTablet ? (
+            <HorizontalBar menuItems={menuItems} />
+          ) : (
+            <VerticalTabs menuItems={menuItems} />
+          )}
           <div className="h-full w-full">
             <HeroSection />
-            <div className="m-20">
+            <div className="md:m-20">
               <h2 className="text-3xl py-4 font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-8 text-galactic-softCyanGreen">
                 Find Events Near You
               </h2>
