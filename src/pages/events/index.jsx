@@ -166,7 +166,7 @@ const SubmitEventSection = () => {
 
 const EventPage = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 525px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
   const menuItems = [
