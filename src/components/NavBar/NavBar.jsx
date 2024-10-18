@@ -47,7 +47,7 @@ const NavBar = () => {
                       src={paintBrushStroke}
                       alt=""
                       className="w-full h-16 "
-                      fill
+                      fill = "true"
                       style={{ objectFit: "cover" }}
                     />
                   </div>
@@ -142,13 +142,13 @@ const UserProfileMenu = () => {
     >
       {/* Profile dropdown */}
       <Menu as="div" className="relative">
-        <div className="flex gap-3">
+        <div className="flex gap-1 lg:gap-3">
           <Menu.Button
             className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="absolute -inset-1.5 rounded-full" />
-            <span className="sr-only">Open user menu</span>
+            {/* <span className="absolute -inset-1.5 rounded-full" />
+            <span className="sr-only">Open user menu</span> */}
             <Image
               alt=""
               width={100}
@@ -157,9 +157,9 @@ const UserProfileMenu = () => {
               className="h-16 w-16 rounded-full border-2 border-galactic-primary"
             />
           </Menu.Button>
-          <div className="text-sm lg:text-base flex flex-col justify-center font-extrabold text-galactic-text p-2 rounded-badge">
+          <div className="text-xs lg:text-base flex flex-col justify-center font-extrabold text-galactic-text p-2 rounded-badge">
             <span className="font-extrabold">ThatFla$hyBoi</span>
-            <span className="text-sm">Joshua Smith</span>
+            <span className="">Joshua Smith</span>
           </div>
         </div>
         <AnimatePresence>
@@ -255,8 +255,9 @@ const MobileNavBar = ({ isOpen }) => {
             exit="exit"
             variants={revealVariant}
             key="mobile-navbar"
+            className="z-30"
           >
-            <div className="space-y-1 pb-3 pt-2 font-bold">
+            <div className="space-y-1 pb-3 pt-2 font-bold z-30">
               <Disclosure.Button
                 as="a"
                 href="/home"

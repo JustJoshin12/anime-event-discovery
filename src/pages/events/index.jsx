@@ -3,24 +3,32 @@ import NavBar from "@/components/NavBar/NavBar";
 import Link from "next/link";
 import VerticalTabs from "../../components/shared/sidebarNav";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Image } from "@/components/shared/image";
 import eventTipList from "@/utils/eventTipList";
 import SpringModal from "@/components/shared/springModal";
 import { useMediaQuery } from "react-responsive";
 import HorizontalBar from "@/components/shared/horizontalBar";
+import MobileBar from "@/components/shared/mobileBar";
 
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";
   return (
-    <div
-      className="bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div>
-        <NavBar />
-        <div className="pl-12 lg:text-9xl text-galactic-secondary lg:py-24 font-[Poppins-bold] bg-black/40">
-          Events
+    <div className="relative">
+      <div
+        className="bg-cover bg-no-repeat h-[30vh] md:h-[40vh] "
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        {/* NavBar with Dropdown */}
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <NavBar />
+        </div>
+
+        {/* Header Text */}
+        <div className="flex justify-center items-end pb-8 h-full bg-black/40">
+          <h1 className="text-center text-6xl lg:text-9xl text-galactic-secondary font-[Poppins-bold]">
+            Events
+          </h1>
         </div>
       </div>
     </div>
@@ -29,35 +37,40 @@ const Header = () => {
 
 const EventInfoSection = () => {
   const image = "/images/eventHeaderImage.webp";
-
+ 
   return (
-    <div className="m-10 mt-20 shadow-2xl">
+    <section className="md:m-10 md:mt-20 shadow-2xl">
       <div
-        className="relative flex justify-center items-center  bg-cover bg-no-repeat"
+        className="relative flex justify-center items-center bg-cover bg-no-repeat py-10"
         style={{ backgroundImage: `url(${image})` }}
       >
         {/* Black Overlay */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 px-20 py-44">
-          <h3 className="text-6xl lg:text-8xl font-[Poppins-Bold] tracking-wider text-galactic-secondary">
+        <div className="relative z-10 md:px-20 md:py-44">
+          <h3 className="text-4xl pt-10 md:pt-0 text-center md:text-6xl lg:text-8xl font-[Poppins-Bold] tracking-wider text-galactic-secondary">
             Experience the Best in <br /> Anime Events
           </h3>
-          <p className="text-white text-base lg:text-lg w-2/3 pt-10 font-[Poppins-Bold] tracking-wider">
-            Welcome to the Event Section of Anime Event Discovery! Whether
-            you&apos;re gearing up for your next anime convention or just
-            exploring what’s happening in the anime world near you, you’re in
-            the right place. Here, you’ll find a carefully curated list of
-            upcoming events, including conventions, screenings, and local
-            meetups, all designed to bring anime fans together for unforgettable
-            experiences. Navigating is simple: browse by event type, date, or
-            location to find something that matches your interests. We update
-            our listings regularly, so check back often to stay in the loop. Get
-            ready to dive into the excitement of the anime community—your next
-            adventure awaits!
-          </p>
+          <div className="bg-slate-800/65 rounded-badge mt-8 text-white font-bold text-sm p-4 md:text-base lg:text-xl lg:w-2/3 pt-10 font-[Poppins-Bold]  text-center flex flex-col gap-6 mx-auto">
+            <p className="leading-5">
+              Welcome to the Event Section of Anime Event Discovery! Whether
+              you&apos;re gearing up for your next anime convention or just
+              exploring what’s happening in the anime world near you, you’re in
+              the right place.
+            </p>
+            <p className="leading-5">
+              Here, you’ll find a carefully curated list of upcoming events,
+              including conventions, screenings, and local meetups, all designed
+              to bring anime fans together for unforgettable experiences.
+              Navigating is simple: browse by event type, date, or location to
+              find something that matches your interests. We update our listings
+              regularly, so check back often to stay in the loop. Get ready to
+              dive into the excitement of the anime community—your next
+              adventure awaits!
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -65,8 +78,8 @@ const EventInfoSection = () => {
 
 const EventGuideSection = ({ children }) => {
   return (
-    <div className="p-16 pt-24">
-      <h4 className="text-6xl font-[Special-Elite] text-galactic-secondary">
+    <div className="flex flex-col md:block items-center md:p-16 pt-24">
+      <h4 className="text-5xl pb-8  text-center md:text-6xl lg:text-8xl font-[Special-Elite] text-galactic-secondary">
         Event Section Guide
       </h4>
       <ul className="grid grid-cols-1 gap-6 gap-y-14 p-4 xl:p-16 sm:grid-cols-2 lg:grid-cols-4">
@@ -152,7 +165,9 @@ const SubmitEventSection = () => {
 //Event Page Component
 
 const EventPage = () => {
-  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
+  const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
   const menuItems = [
     { name: "Events", href: "/events" },
@@ -163,12 +178,23 @@ const EventPage = () => {
     { name: "Whats New ", href: "/events/whatsNew" },
   ];
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    // Prevent rendering on the server-side, avoiding hydration mismatch
+    return null;
+  }
+
   return (
     <div className="flex flex-col">
       <Header />
       <main>
         <div className="flex flex-col lg:flex-row  bg-slate-900">
-          {isTablet ? (
+          {isMobile ? (
+            <MobileBar menuItems={menuItems} />
+          ) : isTablet ? (
             <HorizontalBar menuItems={menuItems} />
           ) : (
             <VerticalTabs menuItems={menuItems} />
