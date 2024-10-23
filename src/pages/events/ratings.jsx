@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
-import VerticalTabs from "../../components/shared/sidebarNav";
+import VerticalTabs from "@/components/shared/sidebarNav";
 import HorizontalBar from "@/components/shared/horizontalBar";
 import MobileBar from "@/components/shared/mobileBar";
 import { motion } from "framer-motion";
