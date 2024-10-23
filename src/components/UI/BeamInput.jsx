@@ -5,29 +5,35 @@ import {
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-import { FiArrowRight } from "react-icons/fi";
+import { FaSearch } from "react-icons/fa";
 
-
-const BeamInput = () => {
+const AnimeSearchInput = () => {
   const inputRef = useRef(null);
 
-  const turn = useMotionValue(0);
+  // Create a motion value for hue rotation
+  const hue = useMotionValue(0);
 
   useEffect(() => {
-    animate(turn, 1, {
+    // Animate the hue value to create a looping color change effect
+    const animation = animate(hue, 360, {
       ease: "linear",
-      duration: 5,
+      duration: 10,
       repeat: Infinity,
     });
-  }, []);
 
-  const backgroundImage = useMotionTemplate`conic-gradient(from ${turn}turn, #a78bfa00 75%, #a78bfa 100%)`;
+    // Cleanup the animation on component unmount
+    return () => animation.stop();
+  }, []); // Empty dependency array to run once on mount
+
+  // Use the hue value to create a dynamic background gradient
+  const background = useMotionTemplate`linear-gradient(90deg, hsl(${hue}, 100%, 70%), hsl(calc(${hue} + 60), 100%, 70%))`;
 
   return (
-    <div className="flex h-[100px] items-center pl-12  px-4">
+    <div className="flex h-[100px] items-center px-4 md:pl-12">
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          // Add your search handling logic here
         }}
         onClick={() => {
           inputRef.current.focus();
@@ -36,31 +42,29 @@ const BeamInput = () => {
       >
         <input
           ref={inputRef}
-          type="email"
-          placeholder="Enter name or state"
-          className="w-full bg-transparent text-sm text-white placeholder-white/80 focus:outline-0 border-none"
+          type="text"
+          placeholder="Search for anime events"
+          className="w-full border-none bg-transparent text-sm text-white placeholder-white/80 focus:outline-none"
         />
 
         <button
           onClick={(e) => e.stopPropagation()}
           type="submit"
-          className="group flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-br from-gray-50 to-gray-400 px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
+          className="group flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 px-4 py-3 text-sm font-medium text-white transition-transform active:scale-95"
         >
-          <span>Search Now</span>
-          <FiArrowRight className="-mr-4 opacity-0 transition-all group-hover:-mr-0 group-hover:opacity-100 group-active:-rotate-45" />
+          <span>Search</span>
+          <FaSearch className="-mr-4 opacity-0 transition-all group-hover:-mr-0 group-hover:opacity-100" />
         </button>
 
-        <div className="pointer-events-none absolute inset-0 z-10 rounded-full">
+        {/* <div className="pointer-events-none absolute inset-0 z-10 rounded-full">
           <motion.div
-            style={{
-              backgroundImage,
-            }}
-            className="mask-with-browser-support absolute -inset-[1px] rounded-full border border-transparent bg-origin-border"
+            style={{ background }}
+            className="absolute -inset-[1px] rounded-full border border-transparent bg-origin-border"
           />
-        </div>
+        </div> */}
       </form>
     </div>
   );
 };
 
-export default BeamInput;
+export default AnimeSearchInput;

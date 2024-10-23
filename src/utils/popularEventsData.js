@@ -723,8 +723,8 @@ export const featuredEventsData = [
         "description": "The premier anime convention in the Northeast, featuring voice actors, artists, and exclusive merchandise.",
         "website_url": "https://animenortheast.org/",
         "images": {
-            "logo": "/images/animeNewsImages/naruto.jpg",
-            "card": "/images/animeNewsImages/naruto.jpg",
+            "logo": "/images/eventImages/animeCollage.webp",
+            "card": "/images/eventImages/animeCollage.webp",
             "news": "https://loremflickr.com/640/480?lock=1122334455"
         },
         "categories": [
@@ -755,8 +755,8 @@ export const featuredEventsData = [
         "description": "A celebration of anime culture on the West Coast, featuring live performances, workshops, and guest speakers.",
         "website_url": "https://pacificanimefest.org/",
         "images": {
-            "logo": "/images/animeNewsImages/dragonBall.jpg",
-            "card": "/images/animeNewsImages/dragonBall.jpg",
+            "logo": "/images/eventImages/dragonballsuper.avif",
+            "card": "/images/eventImages/dragonballsuper.avif",
             "news": "https://loremflickr.com/640/480?lock=2233445566"
         },
         "categories": [
@@ -787,8 +787,8 @@ export const featuredEventsData = [
         "description": "Experience the heart of anime culture in the Midwest with cosplay competitions, gaming tournaments, and artist showcases.",
         "website_url": "https://midwestanimeexpo.org/",
         "images": {
-            "logo": "/images/animeNewsImages/bleach.jpg",
-            "card": "/images/animeNewsImages/bleach.jpg",
+            "logo": "/images/eventImages/bleach.avif",
+            "card": "/images/eventImages/bleach.avif",
             "news": "https://loremflickr.com/640/480?lock=3344556677"
         },
         "categories": [
@@ -819,8 +819,8 @@ export const featuredEventsData = [
         "description": "The South's largest anime festival, featuring a blend of anime screenings, cultural exhibits, and live performances.",
         "website_url": "https://southernanimefest.org/",
         "images": {
-            "logo": "/images/animeNewsImages/fairyTail.jpg",
-            "card": "/images/animeNewsImages/fairyTail.jpg",
+            "logo": "/images/eventImages/girlCollage.avif",
+            "card": "/images/eventImages/girlCollage.avif",
             "news": "https://loremflickr.com/640/480?lock=4455667788"
         },
         "categories": [
@@ -851,8 +851,8 @@ export const featuredEventsData = [
         "description": "A unique anime convention set in the scenic mountains, featuring outdoor activities alongside traditional convention events.",
         "website_url": "https://animemountaincon.org/",
         "images": {
-            "logo": "/images/animeNewsImages/haikyuu.jpg",
-            "card": "/images/animeNewsImages/haikyuu.jpg",
+            "logo": "/images/eventImages/jujustuKaisen.avif",
+            "card": "/images/eventImages/jujustuKaisen.avif",
             "news": "https://loremflickr.com/640/480?lock=5566778899"
         },
         "categories": [
@@ -883,8 +883,8 @@ export const featuredEventsData = [
         "description": "An anime festival in the desert featuring night-time events, cosplay under the stars, and unique art installations.",
         "website_url": "https://desertanimefest.org/",
         "images": {
-            "logo": "/images/animeNewsImages/jojosBizarreAdventure.jpg",
-            "card": "/images/animeNewsImages/jojosBizarreAdventure.jpg",
+            "logo": "/images/eventImages/jujustuKaisen.jpg",
+            "card": "/images/eventImages/jujustuKaisen.jpg",
             "news": "https://loremflickr.com/640/480?lock=6677889900"
         },
         "categories": [
@@ -915,8 +915,8 @@ export const featuredEventsData = [
         "description": "Enjoy anime by the beach with cosplay cruises, seaside screenings, and special guest appearances.",
         "website_url": "https://coastalanimecon.org/",
         "images": {
-            "logo": "/images/animeNewsImages/onePunchMan.jpg",
-            "card": "/images/animeNewsImages/onePunchMan.jpg",
+            "logo": "/images/eventImages/myHero.webp",
+            "card": "/images/eventImages/myHero.webp",
             "news": "https://loremflickr.com/640/480?lock=7788990011"
         },
         "categories": [
@@ -947,8 +947,8 @@ export const featuredEventsData = [
         "description": "Explore the intersection of anime and technology with VR experiences, tech demos, and panels on animation software.",
         "website_url": "https://animetechexpo.org/",
         "images": {
-            "logo": "/images/animeNewsImages/steinsGate.jpg",
-            "card": "/images/animeNewsImages/steinsGate.jpg",
+            "logo": "/images/eventImages/dragonballsuper.webp",
+            "card": "/images/eventImages/dragonballsuper.webp",
             "news": "https://loremflickr.com/640/480?lock=8899001122"
         },
         "categories": [
@@ -979,8 +979,8 @@ export const featuredEventsData = [
         "description": "A tropical anime event featuring beach cosplay contests, Latin music performances, and anime-inspired dance parties.",
         "website_url": "https://animefiesta.org/",
         "images": {
-            "logo": "/images/animeNewsImages/yourName.jpg",
-            "card": "/images/animeNewsImages/yourName.jpg",
+            "logo": "/images/eventImages/dragonballsuper.avif",
+            "card": "/images/eventImages/dragonballsuper.avif",
             "news": "https://loremflickr.com/640/480?lock=9900112233"
         },
         "categories": [
@@ -1011,8 +1011,8 @@ export const featuredEventsData = [
         "description": "Celebrate the fall season with an anime twist, featuring Halloween-themed events, pumpkin carving, and cosplay.",
         "website_url": "https://animeharvest.org/",
         "images": {
-            "logo": "/images/animeNewsImages/tokyoGhoul.jpg",
-            "card": "/images/animeNewsImages/tokyoGhoul.jpg",
+            "logo": "/images/eventImages/bluelock.jpg",
+            "card": "/images/eventImages/bluelock.jpg",
             "news": "https://loremflickr.com/640/480?lock=1011121314"
         },
         "categories": [
@@ -1043,8 +1043,8 @@ export const featuredEventsData = [
         "description": "An enchanting anime event with winter-themed cosplay, ice skating, and festive screenings.",
         "website_url": "https://animewinterwonderland.org/",
         "images": {
-            "logo": "/images/animeNewsImages/violetEvergarden.jpg",
-            "card": "/images/animeNewsImages/violetEvergarden.jpg",
+            "logo": "/images/eventImages/bluelock2.webp",
+            "card": "/images/eventImages/bluelock2.webp",
             "news": "https://loremflickr.com/640/480?lock=1213141516"
         },
         "categories": [
@@ -1106,8 +1106,8 @@ export const featuredEventsData = [
         "description": "One of the largest anime conventions in Japan, featuring exhibitions from top anime studios, stage events, and exclusive merchandise.",
         "website_url": "https://www.anime-japan.jp/",
         "images": {
-            "logo": "/images/animeNewsImages/animeJapan.jpg",
-            "card": "/images/animeNewsImages/animeJapan.jpg",
+            "logo": "/images/eventImages/demonSlayer.avif",
+            "card": "/images/eventImages/demonSlayer.avif",
             "news": "https://loremflickr.com/640/480?lock=1415161718"
         },
         "categories": [
@@ -1138,8 +1138,8 @@ export const featuredEventsData = [
         "description": "Europe's biggest convention on Japanese popular culture, including manga, anime, martial arts, and video games.",
         "website_url": "https://www.japan-expo-paris.com/",
         "images": {
-            "logo": "/images/animeNewsImages/japanExpo.jpg",
-            "card": "/images/animeNewsImages/japanExpo.jpg",
+            "logo": "/images/eventImages/bleach2.jpg",
+            "card": "/images/eventImages/bleach2.jpg",
             "news": "https://loremflickr.com/640/480?lock=1516171819"
         },
         "categories": [
@@ -1170,8 +1170,8 @@ export const featuredEventsData = [
         "description": "One of the largest anime conventions in Germany, featuring concerts, cosplay competitions, and guest panels.",
         "website_url": "https://animagic.de/",
         "images": {
-            "logo": "/images/animeNewsImages/animagic.jpg",
-            "card": "/images/animeNewsImages/animagic.jpg",
+            "logo": "/images/eventImages/tokyoghoul2.jpg",
+            "card": "/images/eventImages/tokyoghoul2.jpg",
             "news": "https://loremflickr.com/640/480?lock=1617181920"
         },
         "categories": [
@@ -1202,8 +1202,8 @@ export const featuredEventsData = [
         "description": "Australia's ultimate anime event with international guests, exclusive screenings, and interactive activities.",
         "website_url": "https://www.animefestival.com.au/",
         "images": {
-            "logo": "/images/animeNewsImages/madmanAnimeFestival.jpg",
-            "card": "/images/animeNewsImages/madmanAnimeFestival.jpg",
+            "logo": "/images/eventImages/animeCollage.webp",
+            "card": "/images/eventImages/animeCollage.webp",
             "news": "https://loremflickr.com/640/480?lock=1718192021"
         },
         "categories": [
@@ -1234,8 +1234,8 @@ export const featuredEventsData = [
         "description": "Southeast Asia's biggest Japanese Pop Culture event, featuring concerts, exhibitions, and cosplay.",
         "website_url": "https://animefestival.asia/",
         "images": {
-            "logo": "/images/animeNewsImages/afaSingapore.jpg",
-            "card": "/images/animeNewsImages/afaSingapore.jpg",
+            "logo": "/images/eventImages/myhero2.avif",
+            "card": "/images/eventImages/myhero2.avif",
             "news": "https://loremflickr.com/640/480?lock=1819202122"
         },
         "categories": [
@@ -1266,8 +1266,8 @@ export const featuredEventsData = [
         "description": "The virtual edition of Anime Expo, bringing the latest announcements, special guests, and content to fans worldwide.",
         "website_url": "https://www.anime-expo.org/",
         "images": {
-            "logo": "/images/animeNewsImages/animeExpoLite.jpg",
-            "card": "/images/animeNewsImages/animeExpoLite.jpg",
+            "logo": "/images/eventImages/narutoshippuden.jpg",
+            "card": "/images/eventImages/narutoshippuden.jpg",
             "news": "https://loremflickr.com/640/480?lock=1920212223"
         },
         "categories": [
@@ -1298,8 +1298,8 @@ export const featuredEventsData = [
         "description": "Canada's largest bilingual anime convention, featuring cosplay, gaming, and a variety of cultural activities.",
         "website_url": "https://www.otakuthon.com/",
         "images": {
-            "logo": "/images/animeNewsImages/otakuthon.jpg",
-            "card": "/images/animeNewsImages/otakuthon.jpg",
+            "logo": "/images/eventImages/tokyoghoul4.png",
+            "card": "/images/eventImages/tokyoghoul4.png",
             "news": "https://loremflickr.com/640/480?lock=2021222324"
         },
         "categories": [
@@ -1330,8 +1330,8 @@ export const featuredEventsData = [
         "description": "The largest and longest-running anime convention in the Netherlands, offering a wide range of activities and events.",
         "website_url": "https://www.animecon.nl/",
         "images": {
-            "logo": "/images/animeNewsImages/animeconNL.jpg",
-            "card": "/images/animeNewsImages/animeconNL.jpg",
+            "logo": "/images/eventImages/tokyoghoul3.avif",
+            "card": "/images/eventImages/tokyoghoul3.avif",
             "news": "https://loremflickr.com/640/480?lock=2122232425"
         },
         "categories": [
@@ -1362,8 +1362,8 @@ export const featuredEventsData = [
         "description": "An annual Japanese pop culture convention in Sydney, featuring cosplay, art competitions, and guest panels.",
         "website_url": "https://smash.org.au/",
         "images": {
-            "logo": "/images/animeNewsImages/smashSydney.jpg",
-            "card": "/images/animeNewsImages/smashSydney.jpg",
+            "logo": "/images/eventImages/jujustuKaisen.jpg",
+            "card": "/images/eventImages/jujustuKaisen.jpg",
             "news": "https://loremflickr.com/640/480?lock=2223242526"
         },
         "categories": [
@@ -1394,8 +1394,8 @@ export const featuredEventsData = [
         "description": "The world's largest self-published comic book fair, where fans buy and sell dōjinshi (self-published works).",
         "website_url": "https://www.comiket.co.jp/",
         "images": {
-            "logo": "/images/animeNewsImages/comiket.jpg",
-            "card": "/images/animeNewsImages/comiket.jpg",
+            "logo": "/images/eventImages/girlCollage.avif",
+            "card": "/images/eventImages/girlCollage.avif",
             "news": "https://loremflickr.com/640/480?lock=2324252627"
         },
         "categories": [

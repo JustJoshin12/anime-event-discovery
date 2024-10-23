@@ -4,7 +4,7 @@ import DotExpandButton from "./DotExpandButton";
 import CloseButton from "./CloseButton";
 
 const CharacterWithMessage = ({ imageSrc, event, onClose }) => {
-  if (!event) return (<div className="text-5xl text-galactic-background">click on a event</div>);
+  if (!event) return (<div className="py-14 text-3xl md:text-5xl text-galactic-background">click on a event</div>);
 
   const characterVariants = {
     hidden: { opacity: 0, x: 50 },

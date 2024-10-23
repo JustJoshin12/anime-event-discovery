@@ -13,21 +13,18 @@ import { Image } from "@/components/shared/image";
 import { motion } from "framer-motion";
 import FilterTabs from "@/components/shared/filterTabs";
 import CharacterWithMessage from "@/components/UI/AnimeCharacterMessager";
-import Carousel from "@/components/shared/carousel";
+import ButtonCarousel from "@/components/shared/buttonCarousel";
 import dateFormatter from "@/utils/dateFormatter";
 import { useMediaQuery } from "react-responsive";
 import MobileBar from "@/components/shared/mobileBar";
 import HorizontalBar from "@/components/shared/horizontalBar";
 
-const CharacterMessageStyles = {
-  
-};
+const CharacterMessageStyles = {};
 
 const BREAKPOINTS = {
   sm: 640,
   lg: 1024,
 };
-
 
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";
@@ -73,7 +70,7 @@ const FeaturedItem = ({ images, date, name, description, style }) => {
 };
 
 const FeaturedSection = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 525px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 340px)" });
 
   // Dynamically calculate card width based on screen size
   const CARD_WIDTH = isMobile ? 295 : 350;
@@ -88,16 +85,18 @@ const FeaturedSection = () => {
       "text-galactic-secondary relative shrink-0 cursor-pointer transition-transform hover:-translate-y-1 p-4 rounded-md bg-galactic-lightGray/70",
   };
   const carouselStyles = {
-    section: "bg-cosmic-4 rounded-badge drop-shadow-lg  md:p-8",
-    title: "mb-8 text-2xl md:text-4xl font-[Poppins-bold] text-galactic-primary",
+    section: "rounded-badge drop-shadow-lg",
+    title:
+      "mb-8 leading-7 text-2xl md:text-4xl font-[Poppins-bold] text-galactic-primary",
   };
 
   return (
-    <div>
-      <h3 className="pl-8 text-6xl tracking-wider font-[Special-Elite] mb-8 text-galactic-complementaryYellow">
+    <section className="bg-cosmic-4 rounded-badge  md:p-8">
+      <h3 className="pl-8 text-6xl tracking-wider font-[Special-Elite] mb-8 text-galactic-darkGray">
         Featured Content
       </h3>
-      <Carousel
+      <p className="text-3xl text-galactic-darkGray">Enjoy Some Highlghted Content</p>
+      <ButtonCarousel
         breakpoints={BREAKPOINTS}
         cardSize={CARD_SIZE}
         posts={featuredEventsData}
@@ -107,8 +106,8 @@ const FeaturedSection = () => {
         {featuredEventsData.map((item) => {
           return <FeaturedItem key={item.id} style={cardStyles} {...item} />;
         })}
-      </Carousel>
-    </div>
+      </ButtonCarousel>
+    </section>
   );
 };
 
@@ -201,11 +200,11 @@ const EventMapSection = () => {
   };
 
   return (
-    <div className="mt-12 flex flex-col lg:flex-row items-center justify-around">
+    <div className="md:mt-12 flex flex-col lg:flex-row items-center justify-around">
       {/* Map Section */}
       <div className="relative w-full lg:w-3/5">
         {/* Filter Section */}
-        <div className="absolute z-30 left-2 top-12">
+        <div className="absolute z-10 left-2 top-12">
           <FilterTabs
             categories={categories}
             selectedCategory={selectedCategory}
@@ -234,7 +233,6 @@ const EventMapSection = () => {
 };
 
 const WhatsNewPage = () => {
-
   const [isMounted, setIsMounted] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 525px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
@@ -257,13 +255,12 @@ const WhatsNewPage = () => {
     return null;
   }
 
-
   return (
     <div className="flex flex-col">
       <Header />
       <main>
         <div className="flex flex-col lg:flex-row bg-slate-900">
-        {isMobile ? (
+          {isMobile ? (
             <MobileBar menuItems={menuItems} />
           ) : isTablet ? (
             <HorizontalBar menuItems={menuItems} />
@@ -276,14 +273,19 @@ const WhatsNewPage = () => {
               <h2 className="text-3xl py-4 font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-8 text-galactic-softCyanGreen">
                 Find Events Near You
               </h2>
-              <div className="p-10 rounded-badge bg-cosmic-4 shadow-2xl">
-                <h3 className="text-5xl tracking-tighter font-bold  my-5 text-galactic-primary drop-shadow-2xl">
-                  Event Map
-                </h3>
-                <p className="text-xl font-semibold tracking-wider font-mono text-galactic-primary py-4">
-                  Discover anime events in your area
-                </p>
+              <div className="rounded-badge bg-cosmic-4 shadow-2xl">
+                <div className="p-10">
+                  <h3 className="text-center md:text-left text-5xl md:text-6xl lg:text-8xl tracking-tighter font-bold  my-5 text-galactic-primary drop-shadow-2xl">
+                    Event Map
+                  </h3>
+                  <p className="text-xl lg:text-3xl leading-5 font-semibold tracking-wider  font-mono text-galactic-primary py-4">
+                    Discover anime events in your area
+                  </p>
+                </div>
+                <div className="p-4">
+
                 <EventMapSection />
+                </div>
               </div>
             </div>
           </div>

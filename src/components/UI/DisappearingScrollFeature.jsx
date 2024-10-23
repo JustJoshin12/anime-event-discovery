@@ -87,7 +87,7 @@ const CarouselItem = ({ scrollYProgress, position, numItems, event }) => {
           {new Date(event.date).toDateString()}
         </p>
         {/* Hidden Description */}
-        <p className="mt-2 text-neutral-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <p className="mt-2 text-neutral-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2 md:line-clamp-none">
           {event.description}
         </p>
         {/* Call-to-Action Button */}
