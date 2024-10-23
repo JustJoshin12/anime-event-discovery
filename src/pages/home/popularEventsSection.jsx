@@ -37,10 +37,10 @@ const PopularEventsSection = () => {
           <SkeletonCard width="w-full" />
         </div>
       </div>
-    );
-  } else if (status === "failed") {
-    return <FailedApiComponent error={error} />;
-  } 
+    );}
+  // } else if (status === "failed") {
+  //   return <FailedApiComponent error={error} />;
+  // } 
 
   if (!popularItems || popularItems.length === 0) {
     return <div>No popular events found.</div>;

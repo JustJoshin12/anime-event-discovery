@@ -1,10 +1,10 @@
 /// EventCard.jsx
+import React from "react";
+import { motion } from "framer-motion";
+import { FcLike, FcRatings, FcBarChart } from "react-icons/fc";
+import { Image } from "../shared/image";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Image } from '../shared/image';
-
-const EventCard = ({ event }) => {
+const SearchEventCard = ({ event }) => {
   const {
     name,
     date,
@@ -18,150 +18,64 @@ const EventCard = ({ event }) => {
     attendees,
   } = event;
 
-  // Format the date
   const eventDate = new Date(date);
-  const formattedDate = eventDate.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+  const formattedDate = eventDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
-  const formattedTime = eventDate.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: 'numeric',
-  });
-
-  // Combine location details
-  const locationText = `${location.city}, ${location.state}, ${location.country}`;
+  const locationText = `${location.city}, ${location.state}`;
 
   return (
     <motion.div
-      className="relative bg-white rounded-lg shadow-lg overflow-hidden group"
+      className="relative h-full bg-galactic-darkGray rounded-lg shadow-lg flex flex-col justify-between overflow-hidden group"
       whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3 }}
     >
-      {/* Thumbnail Image */}
+      {/* Thumbnail */}
       <div className="overflow-hidden">
         <Image
           src={images.card}
           alt={name}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        {/* Event Title */}
-        <h2 className="text-2xl font-bold text-purple-700 mb-2">{name}</h2>
+      <div className="p-4 flex flex-col flex-grow">
+        <h2 className="text-xl font-bold text-galactic-primary mb-2">{name}</h2>
+        <p className="text-galactic-text text-sm">{formattedDate}</p>
+        <p className="text-galactic-text text-xs mb-2">{locationText}</p>
+        <p className="text-galactic-text text-sm mb-4 flex-grow">{description}</p>
 
-        {/* Date and Time */}
-        <div className="flex items-center text-gray-600 mb-1">
-          {/* Date Icon */}
-          <svg
-            className="w-5 h-5 mr-2 text-pink-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            {/* SVG path */}
-          </svg>
-          <span>
-            {formattedDate} at {formattedTime}
-          </span>
-        </div>
-
-        {/* Location */}
-        <div className="flex items-center text-gray-600 mb-2">
-          {/* Location Icon */}
-          <svg
-            className="w-5 h-5 mr-2 text-blue-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            {/* SVG path */}
-          </svg>
-          <span>{locationText}</span>
-        </div>
-
-        {/* Categories/Badges */}
-        <div className="flex flex-wrap mb-2">
-          {categories.map((category, index) => (
-            <span
-              key={index}
-              className="bg-purple-100 text-purple-700 text-sm font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
-
-        {/* Brief Description */}
-        <p className="text-gray-700 mb-4">{description}</p>
-
-        {/* Additional Info */}
-        <div className="flex items-center justify-between text-gray-600 mb-4">
-          <div className="flex items-center">
-            {/* Likes Icon */}
-            <svg
-              className="w-5 h-5 mr-1 text-red-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              {/* SVG path */}
-            </svg>
+        {/* Icon Bar */}
+        <div className="flex justify-between items-center text-galactic-text mb-3">
+          <div className="flex items-center space-x-2">
+            <FcLike className="w-5 h-5" />
             <span>{likes}</span>
           </div>
-          <div className="flex items-center">
-            {/* Rating Icon */}
-            <svg
-              className="w-5 h-5 mr-1 text-yellow-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              {/* SVG path */}
-            </svg>
+          <div className="flex items-center space-x-2">
+            <FcRatings className="w-5 h-5" />
             <span>{rating}</span>
           </div>
-          <div className="flex items-center">
-            {/* Attendees Icon */}
-            <svg
-              className="w-5 h-5 mr-1 text-green-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              {/* SVG path */}
-            </svg>
+          <div className="flex items-center space-x-2">
+            <FcBarChart className="w-5 h-5" />
             <span>{attendees}</span>
           </div>
         </div>
-
-        {/* Call-to-Action Button */}
-        <a
-          href={website_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full block bg-pink-500 text-white text-center font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors duration-300 relative z-20"
-        >
-          Visit Website
-        </a>
       </div>
 
-      {/* Hover Overlay */}
-      <motion.div
-        className="absolute top-0 left-0 right-0 bottom-16 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
+      {/* Call-to-Action Button */}
+      <a
+        href={website_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-auto bg-galactic-primary text-white font-bold py-2 px-4 text-center hover:bg-galactic-accent transition-colors duration-300"
       >
-        <div className="text-white text-center">
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">
-            Add to Favorites
-          </button>
-          <br />
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Share
-          </button>
-        </div>
-      </motion.div>
+        Learn More
+      </a>
     </motion.div>
   );
 };
 
-export default EventCard;
+export default SearchEventCard;

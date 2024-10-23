@@ -77,7 +77,7 @@ const MapComponent = ({ events, userLocation, setSelectedEvent, mapContainerStyl
 
   // Load the Google Maps script
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBsJN5M5kABg-9OrbVW1-rG6yoCk648cZs", // Replace with your actual API key
+    googleMapsApiKey: "AIzaSyBsJN5M5kABg-9OrbVW1-rG6yoCk648cZs",
   });
 
   // Effect to set up the custom icon after the Google Maps API is loaded.

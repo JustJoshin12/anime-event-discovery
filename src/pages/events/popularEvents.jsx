@@ -3,13 +3,13 @@
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 import VerticalTabs from "../../components/shared/sidebarNav";
+import MobileBar from "@/components/shared/mobileBar";
+import HorizontalBar from "@/components/shared/horizontalBar";
 import { Image } from "@/components/shared/image";
 import { useState, useEffect, useCallback } from "react";
+import { useMediaQuery } from "react-responsive";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  popularEventsData,
-  popularEventsCardData,
-} from "@/utils/popularEventsData";
+import { popularEventsData, popularEventsCardData } from "@/utils/popularEventsData";
 import { FaHeart, FaMapMarkerAlt, FaCalendarAlt, FaStar } from "react-icons/fa";
 import Modal from "@/components/shared/eventCardModal";
 import formatDate from "@/utils/dateFormatter";
@@ -26,20 +26,26 @@ const batchSize = 10; // Number of events to load per batch
 const Header = () => {
   const backgroundImage = "/images/heroImage6.jpg";
   return (
-    <div
-      className="bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div>
-        <NavBar />
-        <div className="pl-12 lg:text-9xl text-galactic-secondary lg:py-28 font-[Poppins-bold] bg-black/40">
-          Events
+    <div className="relative">
+      <div
+        className="bg-cover bg-no-repeat h-[30vh] md:h-[40vh] "
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        {/* NavBar with Dropdown */}
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <NavBar />
+        </div>
+
+        {/* Header Text */}
+        <div className="flex justify-center items-end pb-8 h-full bg-black/40">
+          <h1 className="text-center text-6xl lg:text-9xl text-galactic-secondary font-[Poppins-bold]">
+            Events
+          </h1>
         </div>
       </div>
     </div>
   );
 };
-
 //Hero Section
 
 const HeroSection = () => {
@@ -87,11 +93,12 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="bg-slate-900/60 py-10"
           >
-            <h1 className="text-4xl md:text-6xl font-bold">
+            <h1 className="text-5xl md:text-6xl font-bold text-galactic-primary">
               {popularEventsData[currentIndex].name}
             </h1>
-            <p className="mt-4 text-lg md:text-2xl">
+            <p className="mt-4 text-lg md:text-2xl text-galactic-secondary">
               {popularEventsData[currentIndex].description}
             </p>
             <button
@@ -150,7 +157,7 @@ const PopularEventsSection = () => {
 
   return (
     <div className="container mx-auto py-32">
-      <h2 className="text-8xl font-[Special-Elite] text-galactic-primary text-center mb-32">
+      <h2 className="text-6xl md:text-8xl font-[Special-Elite] text-galactic-primary text-center mb-32">
         Popular Events
       </h2>
       <motion.div
@@ -245,6 +252,9 @@ const PopularEventsSection = () => {
 
 //Popular Event Page
 const PopularEventsPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 525px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const menuItems = [
     { name: "Events", href: "/events" },
     { name: "Search Events", href: "/events/searchEvents" },
@@ -253,13 +263,29 @@ const PopularEventsPage = () => {
     { name: "Event Ratings", href: "/events/ratings" },
     { name: "Whats New ", href: "/events/whatsNew" },
   ];
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    // Prevent rendering on the server-side, avoiding hydration mismatch
+    return null;
+  }
+
   return (
     <div className="flex flex-col h-screen">
       <Header />
       <main>
-        <div className="flex flex-row h-full">
-          <VerticalTabs menuItems={menuItems} />
-          <div className="flex-grow bg-galactic-complementaryYellow">
+        <div className="flex flex-col lg:flex-row bg-slate-900">
+        {isMobile ? (
+            <MobileBar menuItems={menuItems} />
+          ) : isTablet ? (
+            <HorizontalBar menuItems={menuItems} />
+          ) : (
+            <VerticalTabs menuItems={menuItems} />
+          )}
+          <div className="w-full bg-galactic-complementaryYellow">
             <HeroSection />
             <PopularEventsSection events={popularEventsCardData} />
           </div>
